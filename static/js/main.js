@@ -225,6 +225,7 @@ function createLessonsForm()
 
 function changeStream(stream_id)
 {
+    console.log(stream_id);
     var html = '<iframe src="http://www.operationcloud.tv/embed/' + stream_id + '/400/330/FALSE/true" scrolling="no" frameborder="0" style="border: none; overflow:hidden; width: 400px; height: 330px" allowtransparency="true"></iframe>';
     $('#video').html(html);
 }
