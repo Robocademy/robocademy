@@ -8,16 +8,16 @@ import urllib
 import sys
 import os
 
-domain = 'robocademybackup.rs.af.cm'
+#domain = 'robocademybackup.rs.af.cm'
 domain = 'robocademy.com'
 
-def download(i, device_path):
+def download(i, device_path, connection_id):
     
     #global i
     
     
     localFile = open('/home/tim/tmprcc/src/sketch.ino', 'w')
-    url = 'http://%s/courses/arduino/get_code/' % (domain)
+    url = 'http://%s/devices/get_code/%s/' % (domain, connection_id)
     # I'm having trouble getting the current version of get_code, cache problems, tried a bunch of things like urllib.urlclean, so now trying
     # wget --cache=off
     os.system('wget --no-cache --user-agent="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" --cookies=on --load-cookies=cookies.txt %s' % url)
@@ -58,12 +58,12 @@ def download(i, device_path):
                 data = {'status': status}
                 data = urllib.urlencode(data) 
                 #print data 
-                req = urllib2.Request('http://%s/courses/arduino/set_cmd_status/' % (domain), data) 
+                req = urllib2.Request('http://%s/devices/set_cmd_status/%s/' % (domain, connection_id), data) 
                 response = urllib2.urlopen(req)
             f = open('is_serial_ok.txt', 'w')
             f.write('true')
             f.close()
-            urllib.urlopen('http://robocademy.com/courses/arduino/set_status/').read()
+            urllib.urlopen('http://robocademy.com/devices/set_status/connection_id').read()
             f = open('current.txt', 'w')
             
             i = code.split('\n')[0]
@@ -71,4 +71,4 @@ def download(i, device_path):
             f.close()            
     
 #print sys.argv[1]
-download(int(sys.argv[1]), sys.argv[2])
+download(int(sys.argv[1]), sys.argv[2], sys.argv[3])

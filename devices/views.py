@@ -92,6 +92,9 @@ def set_serial_monitor(request):
     sm.save()
     return HttpResponse(sm.content, content_type="text/plain")
         
+def get_examples(request, connection_id):
+    connection = Connection.objects.get(id=connection_id)
+    
 def set_status(request, connection_id):
     connection = Connection.objects.get(id=connection_id)
     for i in CodeStatus.objects.filter(connection=connection):
@@ -106,4 +109,4 @@ def get_example_code(request, connection_id):
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
     
 def get_connection_id(request, stream_id):
-    return HttpResponse(Connection.objects.get(stream=stream_id))
+    return HttpResponse(Connection.objects.get(stream=stream_id).id)
