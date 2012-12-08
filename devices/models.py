@@ -84,3 +84,36 @@ class Connection(models.Model):
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
         d.update({'stream': self.get_connection()})
         return d
+        
+class UsersCode(models.Model):
+    connection = models.ForeignKey(Connection)   
+    code = models.TextField()
+    
+class CodeStatus(models.Model):
+    connection = models.ForeignKey(Connection)   
+    status = models.BooleanField()
+    
+class Example(models.Model):
+    connection = models.ForeignKey(Connection)   
+    added_by = models.ForeignKey(User)
+    datetime = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=200, unique=True)
+    code = models.TextField()
+
+class CmdStatus(models.Model):
+    connection = models.ForeignKey(Connection)   
+    status = models.TextField()
+    
+class SerialMonitor(models.Model):
+    connection = models.ForeignKey(Connection)   
+    content = models.TextField()
+    
+    
+class ExecutedCode(models.Model):
+    
+    connection = models.ForeignKey(Connection)   
+    user = models.ForeignKey(User, null=True, blank=True)
+    datetime = models.DateTimeField(auto_now_add=True)
+    code = models.TextField()
+    
+    
