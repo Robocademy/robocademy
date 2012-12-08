@@ -12,7 +12,9 @@ width:100px;
 background:orange;
 display:none;
 }
-
+.hide {
+display:none;
+}
 .highlight {
 background:yellow;
 }
