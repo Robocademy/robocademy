@@ -17,10 +17,10 @@ def arduino(request):
     return render_to_response('courses/arduino.html', context)
 
 def arduino_expert(request):
-    context = RequestContext(request, {'lessons': Lesson.objects.filter(device_configuration__id=1).order_by('order')})
-    context.update({'examples': Code.objects.all(), 'default_example': Lesson.objects.get(device_configuration__id=1, order=1).start_code})
+    #context = RequestContext(request, {'lessons': Lesson.objects.filter(device_configuration__id=1).order_by('order')})
+    #context.update({'examples': Code.objects.all(), 'default_example': Lesson.objects.get(device_configuration__id=1, order=1).start_code})
     #context.update({'examples': Code.objects.all(), 'default_example': Code.objects.get(title='Hello World').code})
-    return render_to_response('courses/arduino_expert.html', context)    
+    return render_to_response('courses/arduino_expert.html', {})    
     
 def save_example(request):
     example = Code(added_by=request.user, title=request.POST['title'], code=request.POST['code'])
