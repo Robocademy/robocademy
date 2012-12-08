@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Robocademy</title>
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="/js/jquery.contextMenu.js"></script>
+<script type="text/javascript" src="/js/jquery.ui.position.js"></script>
+<script type="text/javascript" src="/js/flash_detect_min.js"></script>
+<script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
+<script src="/js/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/screen.css" />
+</head>
+<body>
+<div id="flash_error">You need to install flash</div>
+<div id="wrapper">
+<div style="height:21px;"></div>
+<ul id="nav" style="display:none">
+<li>{% if page == 'about' %}<span>About Robocademy</span>{% else %}<a href="/about/">About Robocademy</a>{% endif %}</li>
+<li><a href="">Courses</a></li>
+<li><a href="">Meetups</a></li>
+<li><a href="">Robots</a></li>
+<li><a href="">Public Policy</a></li>
+<li><a href="">Software</a></li>
+<li><a href="">Databases</a></li>
+<li><a href="">Fork on Github</a></li>
+<li><a href="">Donate Money &amp; Robots</a></li>
+
+</ul>
+<div id="header">
+<div id="account_nav" style="display:none">
+<a href="">Login</a> | <a href="">Signup</a>
+</div>
+{% if page == 'home' %}<h1 id="homeh1"><span>Rocademy</span></h1>{% else %}<h1><a href="/"><span>Rocademy</span></a></h1>{% endif %}
+</div>
+<div id="content">
+{% block content %}
+
+{% endblock %}
+</div>
+
+</div>
+
+</body>
+</html>
