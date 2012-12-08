@@ -2,7 +2,7 @@ var getStatus = 0;
 var countdown = 0;
 var countdowni = 10; 
 var lastTestCode = false;
-var connectionId = 2;
+var connectionId = 1;
 
 function showFlashError() {
     alert($('#flash_error').html());
@@ -12,7 +12,7 @@ function showFlashError() {
 function clearCmdOutput() {
     $.ajax({
       url: '/courses/arduino/set_cmd_status/',
-      data: {status: ''},
+      data: {status: '', connection_id: connection_id},
       type: "POST",
       success: function(response) {
         console.log('cleared cmd output');
@@ -23,7 +23,7 @@ function clearCmdOutput() {
 function uploadArduinoCode() {
     $.ajax({
       url: '/courses/arduino/send_code/',
-      data: {code: editor.getSession().getValue()},
+      data: {code: editor.getSession().getValue(), connection_id},
       type: "POST",
       success: function(response) {
           clearCmdOutput();
@@ -39,7 +39,7 @@ function uploadArduinoCode() {
 function uploadExampleCode() {
     $.ajax({
       url: '/courses/arduino/send_code/',
-      data: {code: example.getSession().getValue()},
+      data: {code: example.getSession().getValue(), connection_id: connection_id},
       type: "POST",
       success: function(response) {
           clearCmdOutput();
@@ -76,7 +76,7 @@ function testCode() {
 function saveExample() {
     $.ajax({
       url: '/courses/arduino/save_example/',
-      data: {code: editor.getSession().getValue(), title: $('#code_title').val()},
+      data: {code: editor.getSession().getValue(), title: $('#code_title').val(), connection_id: connection_id},
       type: "POST",
       success: function(response) {
         $('#message').text('Example saved').show(0).delay(5000).hide(0);
@@ -98,7 +98,7 @@ function countDown() {
 
 function getSerialMonitor() {
     $.ajax({
-      url: '/courses/arduino/get_serial_monitor/',
+      url: '/courses/arduino/get_serial_monitor/'+connection_id+'/',
       type: "GET",
       success: function(response) {
         $('#serial_monitor').html(response.replace(/\n\n/g, "<br/>"));
@@ -109,7 +109,7 @@ function getSerialMonitor() {
 function getArduinoCodeStatus() {
     if (getStatus == 1) {
         $.ajax({
-          url: '/courses/arduino/get_status/',
+          url: '/courses/arduino/get_status/'+connection_id+'/',
           type: "GET",
           success: function(response) {
             console.log(response);
@@ -124,7 +124,7 @@ function getArduinoCodeStatus() {
           }
         });
         $.ajax({
-          url: '/courses/arduino/get_cmd_status/',
+          url: '/courses/arduino/get_cmd_status/'+connection_id+'/',
           type: "GET",
           success: function(response) {
             console.log(response);
@@ -139,7 +139,7 @@ function resetArduino()
     var code = '\n// basic libraries you need\n#include "Charliplexing.h"\n#include "Arduino.h"\n\nvoid setup()                    // run once, when the sketch starts\n{\n  LedSign::Init(); // initialize LedSign\n}\n\n\nvoid loop()                     // this runs over and over, it\'s the main code area\n{\n  delay(1);\n}\n';
     $.ajax({
       url: '/courses/arduino/send_code/',
-      data: {code: code},
+      data: {code: code, connection_id: connection_id},
       type: "POST",
       success: function(response) {
           
@@ -152,7 +152,7 @@ function uploadArduinoTurnLightOn()
     var code = '\n// basic libraries you need\n#include "Charliplexing.h"\n#include "Arduino.h"\n\nvoid setup()                    // run once, when the sketch starts\n{\n  LedSign::Init(); // initialize LedSign\n}\n\nvoid turn_light_on()\n{\n  LedSign::Set(7, 1, 1);\n  \n}\n\nvoid loop()                     // this runs over and over, it\'s the main code area\n{\n  turn_light_on();\n}\n'
     $.ajax({
       url: '/courses/arduino/send_code/',
-      data: {code: code},
+      data: {code: code, connection_id: connection_id},
       type: "POST",
       success: function(response) {
           
@@ -278,7 +278,7 @@ $(function() {
         $.ajax({
           url: '/courses/arduino/get_example_code/',
           type: "GET",
-          data: {id: example_id},
+          data: {id: example_id, connection_id: connection_id},
           success: function(response) {
             
             example.getSession().setValue(response.code);
@@ -308,6 +308,7 @@ $(function() {
         }
         
     });
+    // these below are deactivated
     $('#command_box').bind('keydown', 'ctrl+c/', function(e) {
         e.preventDefault();
         alert('Hey! Copying and pasting is cheating. Type out the code by hand.');

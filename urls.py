@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='/courses/arduino_expert/')),
     (r'^login/', 'about.views.loginuser'),
     (r'^createuser/', 'about.views.createuser'),
-    (r'^about/', direct_to_template, {'template': 'about/index.html', 'extra_context': {'page': 'about'}}),
+    (r'^about/', include('about.urls')),
     (r'^courses/', include('courses.urls')),
     (r'^devices/', include('devices.urls')),
     

@@ -1,7 +1,12 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from models import Contributor
 from django.http import HttpResponse, HttpResponseRedirect
 import sys 
+from django.shortcuts import render_to_response
+
+def contributors(request):
+    return render_to_response('about/contributors.html', {'contributors': Contributor.objects.all()})
 
 def loginuser(request):
     the_user = User.objects.get(username='admin')
