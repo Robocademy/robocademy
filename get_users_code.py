@@ -58,7 +58,7 @@ def download(i, device_path, connection_id):
                 data = {'status': status, 'connection_id': connection_id}
                 data = urllib.urlencode(data) 
                 #print data 
-                req = urllib2.Request('http://%s/devices/set_cmd_status/%s/' % (domain, connection_id), data) 
+                req = urllib2.Request('http://%s/devices/set_cmd_status/' % (domain), data) 
                 response = urllib2.urlopen(req)
             f = open('is_serial_ok.txt', 'w')
             f.write('true')
