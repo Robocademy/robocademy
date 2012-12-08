@@ -223,8 +223,14 @@ function createLessonsForm()
     });
 }
 
+function changeStream(stream_id)
+{
+    var html = '<iframe src="http://www.operationcloud.tv/embed/' + stream_id + '/400/330/FALSE/true" scrolling="no" frameborder="0" style="border: none; overflow:hidden; width: 400px; height: 330px" allowtransparency="true"></iframe>';
+    $('#video').html(html);
+}
 
 $(function() {
+    changeStream(106);
     createDropdowns();
     //createLessonsForm();
     $('#command_box').keypress(function(event) {
@@ -288,14 +294,8 @@ $(function() {
     });
     $('#configuration').live('change', function() 
     {
-        //var connection_id = $(this).find(':selected').attr('connection_id');
         var stream_id = $(this).find(':selected').attr('stream');
-        console.log(stream_id);
-        //var html = '<script type="text/javascript">var embedBaseUrl = \'http://www.operationcloud.tv/\';var embedChannelId = 104;var embedSize = [400, 330];var embedAutoplay = true;</script><script type="text/javascript" src="http://www.operationcloud.tv/assets/js/embed.js"></script>'
-        //var html = '<script type="text/javascript">var embedBaseUrl = \'http://www.operationcloud.tv/\';var embedChannelId = ' + stream_id + ';var embedSize = [400, 330];var embedAutoplay = true;</script><script type="text/javascript" src="http://www.operationcloud.tv/assets/js/embed.js"></script>';
-        var html = '<iframe src="http://www.operationcloud.tv/embed/' + stream_id + '/400/330/FALSE/true" scrolling="no" frameborder="0" style="border: none; overflow:hidden; width: 400px; height: 330px" allowtransparency="true"></iframe>';
-        $('#video').html(html);
-        console.log($('#video').html());
+        changeStream(stream_id);
     });
     $('#array_generator_table td').click(function() {
         if ($(this).hasClass('on_cell')) {
