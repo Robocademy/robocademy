@@ -11,7 +11,7 @@ function showFlashError() {
 
 function clearCmdOutput() {
     $.ajax({
-      url: '/courses/arduino/set_cmd_status/',
+      url: '/devices/set_cmd_status/',
       data: {status: '', connection_id: connection_id},
       type: "POST",
       success: function(response) {
@@ -22,7 +22,7 @@ function clearCmdOutput() {
    
 function uploadArduinoCode() {
     $.ajax({
-      url: '/courses/arduino/send_code/',
+      url: '/devices/send_code/',
       data: {code: editor.getSession().getValue(), connection_id: connection_id},
       type: "POST",
       success: function(response) {
@@ -38,7 +38,7 @@ function uploadArduinoCode() {
 
 function uploadExampleCode() {
     $.ajax({
-      url: '/courses/arduino/send_code/',
+      url: '/devices/send_code/',
       data: {code: example.getSession().getValue(), connection_id: connection_id},
       type: "POST",
       success: function(response) {
@@ -54,7 +54,7 @@ function uploadExampleCode() {
 
 function testCode() {
     $.ajax({
-      url: '/courses/arduino/test_code/',
+      url: '/devices/test_code/',
       data: {code: editor.getSession().getValue()},
       type: "POST",
       success: function(response) {
@@ -75,7 +75,7 @@ function testCode() {
 
 function saveExample() {
     $.ajax({
-      url: '/courses/arduino/save_example/',
+      url: '/devices/save_example/',
       data: {code: editor.getSession().getValue(), title: $('#code_title').val(), connection_id: connection_id},
       type: "POST",
       success: function(response) {
@@ -98,7 +98,7 @@ function countDown() {
 
 function getSerialMonitor() {
     $.ajax({
-      url: '/courses/arduino/get_serial_monitor/'+connection_id+'/',
+      url: '/devices/get_serial_monitor/'+connection_id+'/',
       type: "GET",
       success: function(response) {
         $('#serial_monitor').html(response.replace(/\n\n/g, "<br/>"));
@@ -109,7 +109,7 @@ function getSerialMonitor() {
 function getArduinoCodeStatus() {
     if (getStatus == 1) {
         $.ajax({
-          url: '/courses/arduino/get_status/'+connection_id+'/',
+          url: '/devices/get_status/'+connection_id+'/',
           type: "GET",
           success: function(response) {
             console.log(response);
@@ -124,7 +124,7 @@ function getArduinoCodeStatus() {
           }
         });
         $.ajax({
-          url: '/courses/arduino/get_cmd_status/'+connection_id+'/',
+          url: '/devices/get_cmd_status/'+connection_id+'/',
           type: "GET",
           success: function(response) {
             console.log(response);
@@ -138,7 +138,7 @@ function resetArduino()
 {
     var code = '\n// basic libraries you need\n#include "Charliplexing.h"\n#include "Arduino.h"\n\nvoid setup()                    // run once, when the sketch starts\n{\n  LedSign::Init(); // initialize LedSign\n}\n\n\nvoid loop()                     // this runs over and over, it\'s the main code area\n{\n  delay(1);\n}\n';
     $.ajax({
-      url: '/courses/arduino/send_code/',
+      url: '/devices/send_code/',
       data: {code: code, connection_id: connection_id},
       type: "POST",
       success: function(response) {
@@ -151,7 +151,7 @@ function uploadArduinoTurnLightOn()
 {
     var code = '\n// basic libraries you need\n#include "Charliplexing.h"\n#include "Arduino.h"\n\nvoid setup()                    // run once, when the sketch starts\n{\n  LedSign::Init(); // initialize LedSign\n}\n\nvoid turn_light_on()\n{\n  LedSign::Set(7, 1, 1);\n  \n}\n\nvoid loop()                     // this runs over and over, it\'s the main code area\n{\n  turn_light_on();\n}\n'
     $.ajax({
-      url: '/courses/arduino/send_code/',
+      url: '/devices/send_code/',
       data: {code: code, connection_id: connection_id},
       type: "POST",
       success: function(response) {
@@ -195,7 +195,7 @@ function createDropdowns()
 function createLessonsForm()
 {
     $.ajax({
-      url: '/courses/arduino/get_lessons/1/',
+      url: '/devices/get_lessons/1/',
       type: "GET",
       success: function(response) {
         var lessons = response.lessons;
@@ -276,7 +276,7 @@ $(function() {
     {
         var example_id = $(this).attr('value');
         $.ajax({
-          url: '/courses/arduino/get_example_code/',
+          url: '/devices/get_example_code/',
           type: "GET",
           data: {id: example_id, connection_id: connection_id},
           success: function(response) {
