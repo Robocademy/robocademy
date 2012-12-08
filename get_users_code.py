@@ -63,7 +63,7 @@ def download(i, device_path, connection_id):
             f = open('is_serial_ok.txt', 'w')
             f.write('true')
             f.close()
-            urllib.urlopen('http://robocademy.com/devices/set_status/connection_id').read()
+            urllib.urlopen('http://robocademy.com/devices/set_status/%s/' % (connection_id)).read()
             f = open('current.txt', 'w')
             
             i = code.split('\n')[0]
