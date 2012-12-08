@@ -23,7 +23,7 @@ function clearCmdOutput() {
 function uploadArduinoCode() {
     $.ajax({
       url: '/courses/arduino/send_code/',
-      data: {code: editor.getSession().getValue(), connection_id},
+      data: {code: editor.getSession().getValue(), connection_id: connection_id},
       type: "POST",
       success: function(response) {
           clearCmdOutput();
