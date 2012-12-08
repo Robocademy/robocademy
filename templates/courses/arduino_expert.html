@@ -24,9 +24,6 @@ Title: <input type="text" name="title" id="code_title" /><input type="button" va
 <div style="text-align:right"><input type="button" value="Upload your code (CTRL-U)" id="upload_code" /></div>
 <h3>Examples</h3>
 <div><select id="select_example">
-{% for example in examples %}
-<option value="{{ example.id }}">{{ example.title }}</option>
-{% endfor %}
 </select></div>
 <div id="example_code">{{ default_example }}
 </div><div style="height:300px"></div>
@@ -79,8 +76,6 @@ LedSign::Set(col, row, 1);<br/>
 
 </pre>
 </div>
-<!--<iframe src="https://www.ustream.tv/embed/12656745" height="242" width="400"></iframe>-->
-<!--<object type="application/x-shockwave-flash" data="http://www.justin.tv/widgets/live_embed_player.swf?channel=robocademy" style="margin:10px 0;" id="live_embed_player_flash" height="300" width="400" bgcolor="#000000"><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.justin.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.justin.tv&channel=robocademy&auto_play=true&start_volume=0" /></object>-->
 <h3>About</h3>
 <p>The Lol Shield was purchased from <a href="http://metrixcreatespace.com/" target="_blank">Metrix Create Space</a> for $25 but Ada Fruit <a href="http://www.adafruit.com/products/274" target="_blank">sells an Lol Shield</a> for $20.</p>
 <p>Because this project involved soldering, I would recommend watching <a href="https://www.youtube.com/watch?v=rbM-pYKKWjo" target="_blank">Youtube: LoL Shield LED Straightening</a> before you attempt this. I had several shorts before finally getting it working correctly.</p>

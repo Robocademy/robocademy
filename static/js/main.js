@@ -230,6 +230,25 @@ function changeStream(stream_id)
     $('#video').html(html);
 }
 
+function updateExamples() 
+{
+    html = '';
+    
+    $.ajax({
+      url: '/devices/get_examples/' + connection_id + '/',
+      type: "GET",
+      success: function(response) {
+        html = ''
+        for (var i = 0; i < response.examples.length; i++)
+        {
+            var example = response.examples[i];
+            html += '<option value="' + example.id +'">' + example.name + '</option>';
+        }
+        $('#select_example').html(html);
+      }
+    });
+}
+
 $(function() {
     changeStream(106);
     createDropdowns();
@@ -283,9 +302,9 @@ $(function() {
     {
         var example_id = $(this).attr('value');
         $.ajax({
-          url: '/devices/get_example_code/',
+          url: '/devices/get_example_code/'+connection_id+'/',
           type: "GET",
-          data: {id: example_id, connection_id: connection_id},
+          data: {id: example_id},
           success: function(response) {
             
             example.getSession().setValue(response.code);
@@ -296,7 +315,16 @@ $(function() {
     $('#configuration').live('change', function() 
     {
         var stream_id = $(this).find(':selected').attr('stream');
+        $.ajax({
+          url: '/devices/get_connection_id/'+stream_id+'/',
+          type: "GET",
+          data: {id: example_id},
+          success: function(response) {
+            connection_id = response;
+          }
+        });
         changeStream(stream_id);
+        updateExamples();
     });
     $('#array_generator_table td').click(function() {
         if ($(this).hasClass('on_cell')) {

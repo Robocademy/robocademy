@@ -15,4 +15,5 @@ urlpatterns = patterns('devices.views',
     url(r'^set_serial_monitor/$', 'set_serial_monitor'),
     url(r'^save_example/$', 'save_example'),
     url(r'^get_example_code/(?P<connection_id>\d+)/$', 'get_example_code'),
+    url(r'^get_connection_id/(?P<stream_id>\d+/$', 'get_connection_id'),
 )

@@ -104,3 +104,6 @@ def get_example_code(request, connection_id):
     example_id = request.GET['id']
     response_data = {'code': Code.objects.get(id=example_id).code}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
+    
+def get_connection_id(request, stream_id):
+    return HttpResponse(Connection.objects.get(stream=stream_id))
