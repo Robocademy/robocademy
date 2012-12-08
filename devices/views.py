@@ -94,6 +94,7 @@ def set_serial_monitor(request):
         
 def get_examples(request, connection_id):
     connection = Connection.objects.get(id=connection_id)
+    return CodeExamples.objects.filter(connection=connection)
     
 def set_status(request, connection_id):
     connection = Connection.objects.get(id=connection_id)
