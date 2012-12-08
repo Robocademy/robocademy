@@ -30,7 +30,7 @@ def save_example(request):
     
 def send_code(request):
     connection = Connection.objects.get(id=request.POST['connection_id'])
-    for i in UsersCode.objects.filter(connection=connection:
+    for i in UsersCode.objects.filter(connection=connection):
         i.delete()
     code = request.POST['code']
     users_code = UsersCode(connection=connection, code=code)
