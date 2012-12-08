@@ -2,7 +2,7 @@ var getStatus = 0;
 var countdown = 0;
 var countdowni = 10; 
 var lastTestCode = false;
-var connectionId = 1;
+var connection_id = 1;
 
 function showFlashError() {
     alert($('#flash_error').html());
@@ -226,7 +226,7 @@ function createLessonsForm()
 
 $(function() {
     createDropdowns();
-    createLessonsForm();
+    //createLessonsForm();
     $('#command_box').keypress(function(event) {
         event.preventDefault();
         console.log('command box change');
