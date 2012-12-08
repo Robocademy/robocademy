@@ -57,7 +57,7 @@ def get_code(request, connection_id):
         
 def get_status(request, connection_id):
     try:
-        connection = Connection.objects.get(id=connection_id])
+        connection = Connection.objects.get(id=connection_id)
         return HttpResponse(str(CodeStatus.objects.filter(connection=connection)[0].status), content_type="text/plain")
     except:
         return HttpResponse('False', content_type="text/plain")
