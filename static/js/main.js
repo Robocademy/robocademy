@@ -318,7 +318,6 @@ $(function() {
         $.ajax({
           url: '/devices/get_connection_id/'+stream_id+'/',
           type: "GET",
-          data: {id: example_id},
           success: function(response) {
             connection_id = response;
           }
