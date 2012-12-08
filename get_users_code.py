@@ -55,7 +55,7 @@ def download(i, device_path, connection_id):
             for line in iter(proc.stdout.readline,''):
                 print line
                 status += '\n' + line.rstrip()
-                data = {'status': status}
+                data = {'status': status, 'connection_id': connection_id}
                 data = urllib.urlencode(data) 
                 #print data 
                 req = urllib2.Request('http://%s/devices/set_cmd_status/%s/' % (domain, connection_id), data) 
