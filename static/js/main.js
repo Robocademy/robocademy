@@ -323,6 +323,10 @@ $(function() {
             connection_id = response;
           }
         });
+        if (connection_id == '2')
+        {
+            $('#tools').show();
+        }
         changeStream(stream_id);
         updateExamples();
     });
