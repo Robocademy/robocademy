@@ -103,7 +103,7 @@ class CodeExample(models.Model):
     def get_dict(self, key_format=None):
         "Returns a dictionary containing field names and values for the given instance"
         instance = self
-        from django.db.models.fields.related import ForeignKey
+        from django.db.models.fields.related import ForeignKey, DateTimeField
         if key_format:
             assert '%s' in key_format, 'key_format must contain a %s'
         key = lambda key: key_format and key_format % key or key
@@ -114,6 +114,8 @@ class CodeExample(models.Model):
             value = getattr(instance, attr)
             if value is not None and isinstance(field, ForeignKey):
                 value = value._get_pk_val()
+            elif isinstance(field, DateTimeField): 
+                value = str(value._get_pk_val())
             d[key(attr)] = value
         for field in instance._meta.many_to_many:
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
