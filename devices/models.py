@@ -116,7 +116,7 @@ class CodeExample(models.Model):
             if value is not None and isinstance(field, ForeignKey):
                 value = value._get_pk_val()
             elif isinstance(field, DateTimeField): 
-                value = str(value._get_pk_val())
+                value = str(value)
             d[key(attr)] = value
         for field in instance._meta.many_to_many:
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
