@@ -246,9 +246,7 @@ function updateExamples()
         //    html += '<option value="' + example.id +'">' + example.title + '</option>';
         //}
         $.each(response, function(x) {   
-         $('#select_example')
-              .append($('<option>', { x.id : x.title})
-              .text(value)); 
+         $('#select_example').append($('<option>', {x.id: x.title}).text(value)); 
         });
         //$('#select_example').append(html);
         console.log($('#select_example').html());
