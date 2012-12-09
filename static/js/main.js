@@ -238,13 +238,19 @@ function updateExamples()
       url: '/devices/get_examples/' + connection_id + '/',
       type: "GET",
       success: function(response) {
-        html = ''
-        for (var i = 0; i < response.length; i++)
-        {
-            var example = response[i];
-            html += '<option value="' + example.id +'">' + example.title + '</option>';
-        }
-        $('#select_example').html(html);
+        html = '';
+        $('#select_example').html('');
+        //for (var i = 0; i < response.length; i++)
+        //{
+        //    var example = response[i];
+        //    html += '<option value="' + example.id +'">' + example.title + '</option>';
+        //}
+        $.each(response, function(x) {   
+         $('#select_example')
+              .append($('<option>', { x.id : x.title})
+              .text(value)); 
+        });
+        //$('#select_example').append(html);
         console.log($('#select_example').html());
       }
     });
