@@ -103,7 +103,8 @@ class CodeExample(models.Model):
     def get_dict(self, key_format=None):
         "Returns a dictionary containing field names and values for the given instance"
         instance = self
-        from django.db.models.fields.related import ForeignKey, DateTimeField
+        from django.db.models.fields.related import ForeignKey
+        from django.db.models import DateTimeField
         if key_format:
             assert '%s' in key_format, 'key_format must contain a %s'
         key = lambda key: key_format and key_format % key or key
