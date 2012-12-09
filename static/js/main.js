@@ -242,7 +242,7 @@ function updateExamples()
         for (var i = 0; i < response.examples.length; i++)
         {
             var example = response.examples[i];
-            html += '<option value="' + example.id +'">' + example.name + '</option>';
+            html += '<option value="' + example.id +'">' + example.title + '</option>';
         }
         $('#select_example').html(html);
       }
@@ -252,6 +252,7 @@ function updateExamples()
 $(function() {
     changeStream(106);
     createDropdowns();
+    updateExamples();
     //createLessonsForm();
     $('#command_box').keypress(function(event) {
         event.preventDefault();
