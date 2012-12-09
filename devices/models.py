@@ -117,7 +117,6 @@ class CodeExample(models.Model):
             d[key(attr)] = value
         for field in instance._meta.many_to_many:
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
-        d.update({'stream': self.get_connection()})
         return d
 
 class CmdStatus(models.Model):
