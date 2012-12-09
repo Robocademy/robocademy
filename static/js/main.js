@@ -239,12 +239,13 @@ function updateExamples()
       type: "GET",
       success: function(response) {
         html = ''
-        for (var i = 0; i < response.examples.length; i++)
+        for (var i = 0; i < response.length; i++)
         {
-            var example = response.examples[i];
+            var example = response[i];
             html += '<option value="' + example.id +'">' + example.title + '</option>';
         }
         $('#select_example').html(html);
+        console.log($('#select_example').html());
       }
     });
 }
