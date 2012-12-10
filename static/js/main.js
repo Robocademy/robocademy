@@ -256,6 +256,7 @@ function updateExamples()
         //});
         //$('#select_example').append(html);
         html += '</select>';
+        $('#examples_dropdown').html(html);
         console.log($('#examples_dropdown').html());
       }
     });
