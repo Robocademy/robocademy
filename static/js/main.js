@@ -360,9 +360,9 @@ $(function() {
             console.log(window.connection_id);
             if (window.connection_id == 2)
             {
-                $('#tools').show();
+                $('#lolshield').show();
             } else {
-                $('#tools').hide();
+                $('#lolshield').hide();
             }
             //changeStream(stream_id);
             //updateExamples();
