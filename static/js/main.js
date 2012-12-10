@@ -274,12 +274,13 @@ function changeConnection(cid, sid)
 {
     connection_id = cid;
     changeStream(sid);
-    createDropdowns();
+    
     updateExamples();
     loadStartCode();
 }
 
 $(function() {
+    createDropdowns();
     changeConnection(1, 106);
     //createLessonsForm();
     $('#command_box').keypress(function(event) {
