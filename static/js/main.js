@@ -270,11 +270,17 @@ function loadStartCode()
     });
 }
 
-$(function() {
-    changeStream(106);
+function changeConnection(cid, sid)
+{
+    connection_id = cid;
+    changeStream(sid);
     createDropdowns();
     updateExamples();
     loadStartCode();
+}
+
+$(function() {
+    changeConnection(1, 106);
     //createLessonsForm();
     $('#command_box').keypress(function(event) {
         event.preventDefault();
@@ -349,8 +355,9 @@ $(function() {
         {
             $('#tools').show();
         }
-        changeStream(stream_id);
-        updateExamples();
+        //changeStream(stream_id);
+        //updateExamples();
+        changeConnection(connection_id, stream_id);
     });
     $('#array_generator_table td').click(function() {
         if ($(this).hasClass('on_cell')) {
