@@ -358,6 +358,8 @@ $(function() {
         if (connection_id == 2)
         {
             $('#tools').show();
+        } else {
+            $('#tools').hide();
         }
         //changeStream(stream_id);
         //updateExamples();
