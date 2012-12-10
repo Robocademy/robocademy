@@ -233,7 +233,7 @@ function changeStream(stream_id)
 function updateExamples() 
 {
     html = '';
-    
+    console.log('about to list examples');
     $.ajax({
       url: '/devices/get_examples/' + connection_id + '/',
       type: "GET",
@@ -244,6 +244,8 @@ function updateExamples()
         //for(var i in response) {
         //  list.add(new Option(response[i].id, response[i].title));
         //}
+        console.log('examples being listed');
+        console.log(JSON.stringify(response));
         for (var i = 0; i < response.length; i++)
         {
             var example = response[i];
