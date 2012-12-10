@@ -73,11 +73,12 @@ def download(i, device_path, connection_id):
             f.write('true')
             f.close()
             urllib.urlopen('http://robocademy.com/devices/set_status/%s/' % (connection_id)).read()
-            f = open('current.txt', 'w')
+            f = open('current_%s.txt' % (connection_id), 'w')
             
             i = code.split('\n')[0]
             f.write(i)
             f.close()            
     
-#print sys.argv[1]
+print sys.argv[1]
+print sys.argv
 download(int(sys.argv[1]), sys.argv[2], sys.argv[3])

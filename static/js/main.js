@@ -258,10 +258,39 @@ function updateExamples()
     });
 }
 
+function updateExamples() 
+{
+    html = '';
+    
+    $.ajax({
+      url: '/devices/get_examples/' + connection_id + '/',
+      type: "GET",
+      success: function(response) {
+        html = '';
+        $('#select_example').html('');
+        var list = document.getElementById("selectList");
+        for(var i in response) {
+          list.add(new Option(response[i].id, response[i].title));
+        }
+        //for (var i = 0; i < response.length; i++)
+        //{
+        //    var example = response[i];
+        //    html += '<option value="' + example.id +'">' + example.title + '</option>';
+        //}
+        //$.each(response, function(x) {   
+        // $('#select_example').append($('<option>', {x.id: x.title}).text(value)); 
+        //});
+        //$('#select_example').append(html);
+        console.log($('#select_example').html());
+      }
+    });
+}
+
 $(function() {
     changeStream(106);
     createDropdowns();
     updateExamples();
+    loadStartCode();
     //createLessonsForm();
     $('#command_box').keypress(function(event) {
         event.preventDefault();
