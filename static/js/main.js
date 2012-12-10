@@ -355,7 +355,8 @@ $(function() {
           success: function(response) {
             console.log('getting connection id');
             connection_id = response;
-            console.log('connection id');
+            console.log(connection_id);
+            
           }
         });
         if (connection_id == 2)
