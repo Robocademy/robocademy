@@ -359,8 +359,8 @@ $(function() {
             
           }
         });
-        console.log(connection_id);
-        if (connection_id == 2)
+        console.log(window.connection_id);
+        if (window.connection_id == 2)
         {
             $('#tools').show();
         } else {
@@ -368,7 +368,7 @@ $(function() {
         }
         //changeStream(stream_id);
         //updateExamples();
-        changeConnection(connection_id, stream_id);
+        changeConnection(window.connection_id, stream_id);
     });
     $('#array_generator_table td').click(function() {
         if ($(this).hasClass('on_cell')) {
