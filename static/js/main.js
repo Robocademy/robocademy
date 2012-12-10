@@ -354,7 +354,7 @@ $(function() {
           type: "GET",
           success: function(response) {
             console.log('getting connection id');
-            connection_id = response;
+            connection_id = parseInt(response);
             console.log(connection_id);
             
           }
