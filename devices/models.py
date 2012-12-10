@@ -100,6 +100,9 @@ class CodeExample(models.Model):
     title = models.CharField(max_length=200, unique=True)
     code = models.TextField()
     
+    def __unicode__(self):
+        return self.title
+    
     def get_dict(self, key_format=None):
         "Returns a dictionary containing field names and values for the given instance"
         instance = self
