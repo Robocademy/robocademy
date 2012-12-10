@@ -92,6 +92,15 @@ def set_serial_monitor(request):
     sm.save()
     return HttpResponse(sm.content, content_type="text/plain")
         
+def get_start_code(request, connection_id):
+    connection = Connection.objects.(id=connection_id)
+    start_code = StartCode.objects.filter(connection=connection)
+    if start_code:
+        start_code = start_code[0].code
+    else:
+        start_code = ''
+    return HttpResponse(start_code, content_type="text/plain")
+        
 def get_examples(request, connection_id):
     connection = Connection.objects.get(id=connection_id)
     response_data = [i.get_dict() for i in CodeExample.objects.filter(connection=connection)]

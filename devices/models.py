@@ -138,4 +138,9 @@ class ExecutedCode(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
     code = models.TextField()
     
+class StartCode(models.Model):
+    connection = models.OneToOneField(Connection)
+    code = models.TextField()
     
+    def __unicode__(self):
+        return '%s %s' % (self.connection.configuration.device, self.connection.configuration.name)
