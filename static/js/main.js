@@ -356,19 +356,19 @@ $(function() {
             console.log('getting connection id');
             window.connection_id = parseInt(response);
             console.log(connection_id);
+            console.log(window.connection_id);
+            if (window.connection_id == 2)
+            {
+                $('#tools').show();
+            } else {
+                $('#tools').hide();
+            }
+            //changeStream(stream_id);
+            //updateExamples();
+            changeConnection(window.connection_id, stream_id);
             
           }
         });
-        console.log(window.connection_id);
-        if (window.connection_id == 2)
-        {
-            $('#tools').show();
-        } else {
-            $('#tools').hide();
-        }
-        //changeStream(stream_id);
-        //updateExamples();
-        changeConnection(window.connection_id, stream_id);
     });
     $('#array_generator_table td').click(function() {
         if ($(this).hasClass('on_cell')) {
