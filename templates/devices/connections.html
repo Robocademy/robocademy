@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<table>
+<tr><th>Id</th><th>Url</th><th>Stream provider</th><th>Device</th></tr>
+{% for connection in connections %}
+<tr><td>{{ connection.id }}</td><td>{{ connection.stream }}</td><td>{{ connection.streaming_provider }}</td><td>{{ connection.configuration }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

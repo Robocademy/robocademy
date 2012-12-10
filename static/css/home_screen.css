@@ -1,0 +1,17 @@
+@import url('reset.css');
+
+body {
+background:#FFF;
+font:3em Arial, sans-serif;
+text-align:center;
+
+}
+
+#video_box {
+position:absolute;
+width:400px;
+height:400px;
+}
+
+
+
