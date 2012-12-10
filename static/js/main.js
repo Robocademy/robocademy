@@ -348,11 +348,14 @@ $(function() {
     $('#configuration').live('change', function() 
     {
         var stream_id = $(this).find(':selected').attr('stream');
+        console.log('about to get connection_id');
         $.ajax({
           url: '/devices/get_connection_id/'+stream_id+'/',
           type: "GET",
           success: function(response) {
+            console.log('getting connection id');
             connection_id = response;
+            console.log('connection id');
           }
         });
         if (connection_id == 2)
