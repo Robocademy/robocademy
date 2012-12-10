@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Manufacture, Device, Configuration, Connection, UsersCode, CodeStatus, CodeExample, CmdStatus, SerialMonitor, ExecutedCode
+from models import Manufacture, Device, Configuration, Connection, UsersCode, CodeStatus, CodeExample, CmdStatus, SerialMonitor, ExecutedCode, StartCode
 
 admin.site.register(Manufacture)
 admin.site.register(Device)
@@ -11,3 +11,4 @@ admin.site.register(CodeExample)
 admin.site.register(CmdStatus)
 admin.site.register(SerialMonitor)
 admin.site.register(ExecutedCode)
+admin.site.register(StartCode)

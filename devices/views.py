@@ -93,7 +93,7 @@ def set_serial_monitor(request):
     return HttpResponse(sm.content, content_type="text/plain")
         
 def get_start_code(request, connection_id):
-    connection = Connection.objects.(id=connection_id)
+    connection = Connection.objects.get(id=connection_id)
     start_code = StartCode.objects.filter(connection=connection)
     if start_code:
         start_code = start_code[0].code
