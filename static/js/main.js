@@ -238,22 +238,23 @@ function updateExamples()
       url: '/devices/get_examples/' + connection_id + '/',
       type: "GET",
       success: function(response) {
-        html = '';
-        $('#select_example').html('');
-        var list = document.getElementById("selectList");
-        for(var i in response) {
-          list.add(new Option(response[i].id, response[i].title));
-        }
-        //for (var i = 0; i < response.length; i++)
-        //{
-        //    var example = response[i];
-        //    html += '<option value="' + example.id +'">' + example.title + '</option>';
+        html = '<select id="select_example">';
+        //$('#select_example').html('');
+        //var list = document.getElementById("selectList");
+        //for(var i in response) {
+        //  list.add(new Option(response[i].id, response[i].title));
         //}
+        for (var i = 0; i < response.length; i++)
+        {
+            var example = response[i];
+            html += '<option value="' + example.id +'">' + example.title + '</option>';
+        }
         //$.each(response, function(x) {   
         // $('#select_example').append($('<option>', {x.id: x.title}).text(value)); 
         //});
         //$('#select_example').append(html);
-        console.log($('#select_example').html());
+        html += '</select>';
+        console.log($('#examples_dropdown').html());
       }
     });
 }
@@ -328,7 +329,7 @@ $(function() {
         e.preventDefault();
         return false;
     });
-    $('#select_example').change(function() 
+    $('#select_example').live('change', function() 
     {
         var example_id = $(this).attr('value');
         $.ajax({
