@@ -97,8 +97,11 @@ class CodeExample(models.Model):
     connection = models.ForeignKey(Connection)   
     added_by = models.ForeignKey(User, null=True, blank=True)
     datetime = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
     code = models.TextField()
+    
+    class Meta:
+        unique_together = (('connection', 'title'))
     
     def __unicode__(self):
         return self.title
