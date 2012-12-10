@@ -238,7 +238,7 @@ function updateExamples()
       url: '/devices/get_examples/' + connection_id + '/',
       type: "GET",
       success: function(response) {
-        html = '<select id="select_example">';
+        html = '<select id="select_example"><option></option>';
         //$('#select_example').html('');
         //var list = document.getElementById("selectList");
         //for(var i in response) {
