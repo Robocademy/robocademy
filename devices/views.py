@@ -116,7 +116,7 @@ def set_status(request, connection_id):
 
 def get_example_code(request, connection_id):
     example_id = request.GET['id']
-    response_data = {'code': ExampleCode.objects.get(id=example_id).code}
+    response_data = {'code': CodeExample.objects.get(id=example_id).code}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
     
 def get_connection_id(request, stream_id):
