@@ -24,7 +24,7 @@ def download(i, device_path, connection_id):
     f = open('index.html', 'r')
     code = f.read()
     f.close()
-    os.system('rm index.html')
+    os.system('rm index.html*')
     #request = urllib2.Request(url)
     #request.add_header('User-Agent', 'Mozilla/5.0')
     #code = urllib2.build_opener().open(request).read()
@@ -33,6 +33,14 @@ def download(i, device_path, connection_id):
     if code != 'None' and re.match('\d+', code.split('\n')[0]):
         if i is None or int(code.split('\n')[0]) != i:
             print 'Doing'
+            while True:
+                f = open('is_serial_ok.txt', 'r')
+                v = f.read().strip()
+                print v
+                f.close()
+                if v == 'true':
+                    break
+                time.sleep(1)
             f = open('is_serial_ok.txt', 'w')
             f.write('false')
             f.close()
@@ -44,6 +52,7 @@ def download(i, device_path, connection_id):
             #display out put line by line
             import subprocess
             # 'source', '/home/tim/djangoenv/bin/activate', 
+            
             proc = subprocess.Popen(['cd /home/tim/tmprcc/; ino build; ino upload -p /dev/%s' % (device_path)], stderr=subprocess.STDOUT, stdout = subprocess.PIPE , shell=True)
             
             status = ''
