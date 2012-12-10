@@ -121,3 +121,15 @@ def get_example_code(request, connection_id):
     
 def get_connection_id(request, stream_id):
     return HttpResponse(Connection.objects.get(stream=stream_id).id)
+    
+def is_title_valid(request, connection_id):
+    connection = Connection.objects.get(id=connection_id)
+    title = request.POST['title']
+    if title in [i.lower() for i in CodeExample.objects.filter(connection=connection).values_list('title')]:
+        is_valid = False
+        reason = 'title in use'
+    else:
+        is_valid = True
+        reason = ''
+    response_data = {'is_valid' is_valid, 'reason': reason}
+    return HttpResponse(json.dumps(response_data), mimetype="application/json")    
