@@ -354,11 +354,12 @@ $(function() {
           type: "GET",
           success: function(response) {
             console.log('getting connection id');
-            connection_id = parseInt(response);
+            window.connection_id = parseInt(response);
             console.log(connection_id);
             
           }
         });
+        console.log(connection_id);
         if (connection_id == 2)
         {
             $('#tools').show();
