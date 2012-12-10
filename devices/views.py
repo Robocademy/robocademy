@@ -24,7 +24,7 @@ def device_connections_json(request):
     
 def save_example(request):
     connection = Connection.objects.get(id=request.POST['connection_id'])
-    example = Example(added_by=request.user, title=request.POST['title'], code=request.POST['code'], connection=connection)
+    example = CodeExample(added_by=request.user, title=request.POST['title'], code=request.POST['code'], connection=connection)
     example.save()
     return HttpResponse('')
     
