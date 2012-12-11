@@ -1,0 +1,6 @@
+@import url('reset.css');
+
+body {
+background:url('../images/background.png') repeat-x;
+font:.8em Arial, sans-serif;
+}
