@@ -274,11 +274,16 @@ function loadStartCode()
     });
 }
 
+function clearExample()
+{
+    example.getSession().setValue(response);
+}
+
 function changeConnection(cid, sid)
 {
     connection_id = cid;
     changeStream(sid);
-    
+    clearExample();
     updateExamples();
     loadStartCode();
 }
