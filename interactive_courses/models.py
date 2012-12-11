@@ -11,6 +11,9 @@ class Course(models.Model):
     
     def __unicode__(self):
         return self.title
+        
+    def get_url(self):
+        return '/interactive_courses/%s/' % (self.slug)
     
 class CourseAuthorRelationship(models.Model):
     course = models.ForeignKey(Course)
