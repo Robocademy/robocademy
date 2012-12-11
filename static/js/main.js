@@ -283,9 +283,18 @@ function changeConnection(cid, sid)
 {
     connection_id = cid;
     changeStream(sid);
-    clearExample();
+    clearExample
     updateExamples();
     loadStartCode();
+}
+
+function setStartCode()
+{
+    $.ajax({
+      url: '/devices/set_start_code/',
+      data: {code: editor.getSession().getValue(), connection_id: connection_id},
+      type: "POST"
+    });    
 }
 
 $(function() {
@@ -312,6 +321,9 @@ $(function() {
     setInterval(getArduinoCodeStatus, 1000);
     setInterval(getSerialMonitor, 1000);
     setInterval(countDown, 1000);
+    $('#set_start_code').click(function() {
+        setStartCode();
+    });
     $('.lesson_textarea').live('click', function() {
         //alert('hi');
         $(this).css({'position': 'absolute', 'left': 0, 'top': 0, 'width': '100%', 'height': '100%'});
