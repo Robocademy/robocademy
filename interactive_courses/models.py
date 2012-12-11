@@ -5,7 +5,7 @@ from django.contrib.contenttypes import generic
 
 class Course(models.Model):
     title = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(prepopulate_from=('title',))
+    slug = models.SlugField()
     price = models.FloatField(default=0)
     authors = models.ManyToManyField(User, through='CourseAuthorRelationship')
     
@@ -26,7 +26,7 @@ class CourseAuthorRelationship(models.Model):
 class Lesson(models.Model):
     course = models.ForeignKey(Course)
     title = models.CharField(max_length=50)
-    slug = models.SlugField(prepopulate_from=('title',))
+    slug = models.SlugField()
     order = models.PositiveIntegerField()
     
     def __unicode__(self):
