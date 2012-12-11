@@ -14,15 +14,13 @@
 
 <div class="clear"></div>
 <div>
-{% if user.is_authenticated %}
 Title: <input type="text" name="title" id="code_title" /><input type="button" value="Publish your example" id="save_example" /><br/></div>
-{% endif %}
 <div id="right_sidebar" style="float:right; width: 390px;">
 
 <h3>Your code that is uploaded</h3>
 <div id="arduino_code">{{ default_example }}
 </div><div style="height:300px"></div>
-<div style="text-align:right"><input type="button" value="Upload your code (CTRL-U)" id="upload_code" /></div>
+<div style="text-align:right">{% if user.is_staff %}<input type="button" value="Set as start code" id="set_start_code" />{% endif %}<input type="button" value="Upload your code (CTRL-U)" id="upload_code" /></div>
 <h3>Examples</h3>
 <div><span id="examples_dropdown"><select id="select_example">
 </select></span></div>

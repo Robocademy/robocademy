@@ -133,3 +133,10 @@ def is_title_valid(request, connection_id):
         reason = ''
     response_data = {'is_valid': is_valid, 'reason': reason}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")    
+    
+def set_start_code(request, connection_id):
+    connection = Connection.objects.get(id=connection_id)
+    start_code = StartCode.objects.get(connection=connection)
+    start_code.code = request.POST['code']
+    start_code.save()    
+    return HttpResponse('')

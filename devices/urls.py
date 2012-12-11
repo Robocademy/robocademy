@@ -18,4 +18,6 @@ urlpatterns = patterns('devices.views',
     url(r'^get_example_code/(?P<connection_id>\d+)/$', 'get_example_code'),
     url(r'^get_connection_id/(?P<stream_id>\d+)/$', 'get_connection_id'),
     url(r'^get_start_code/(?P<connection_id>\d+)/$', 'get_start_code'),
+    url(r'^set_start_code/(?P<connection_id>\d+)/$', 'set_start_code'),
+    url(r'^is_title_valid/(?P<connection_id>\d+)/$', 'is_title_valid'),
 )
