@@ -276,7 +276,7 @@ function loadStartCode()
 
 function clearExample()
 {
-    example.getSession().setValue(response);
+    example.getSession().setValue('');
 }
 
 function changeConnection(cid, sid)
