@@ -10,7 +10,7 @@ $(function() {
         preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
         onPlay: function(id){}, // after the play method is called
         onPause: function(){}, // after the pause method is called
-        onPlayerEnded: function(){alert('done');}, // after the player is stopped
+        onPlayerEnded: function(){$("#youtube-player-container").html('What is the parts');}, // after the player is stopped
         onSeek: function(time){}, // after the video has been seeked to a defined point
         onMute: function(){}, // after the player is muted
         onUnMute: function(){} // after the player is unmuted
