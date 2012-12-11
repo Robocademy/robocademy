@@ -35,9 +35,17 @@ class Lesson(models.Model):
     class Meta:
         unique_together = ('course', 'order')
         
+class Video(models.Model):
+    lesson = models.ForeignKey(Lesson)
+    url = models.CharField(max_length=200)
+    provider = models.CharField(max_length=20)
+
+    def __unicode__(self):
+        return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title)   
+        
 class QuestionAndAnswer(models.Model):
     lesson = models.ForeignKey(Lesson)
-    order = models.PositiveIntegerField(default=0)
+    order = models.PositiveIntegerField(default=1)
     statement = models.TextField()
     question_type = models.ForeignKey(ContentType, related_name="asQuestion")
     question_id = models.PositiveIntegerField()
