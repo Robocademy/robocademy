@@ -131,5 +131,5 @@ def is_title_valid(request, connection_id):
     else:
         is_valid = True
         reason = ''
-    response_data = {'is_valid' is_valid, 'reason': reason}
+    response_data = {'is_valid': is_valid, 'reason': reason}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")    
