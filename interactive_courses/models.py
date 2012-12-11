@@ -39,12 +39,12 @@ class QuestionAndAnswer(models.Model):
     lesson = models.ForeignKey(Lesson)
     order = models.PositiveIntegerField(default=0)
     statement = models.TextField()
-    question_type = models.ForeignKey(ContentType)
+    question_type = models.ForeignKey(ContentType, related_name="asQuestion")
     question_id = models.PositiveIntegerField()
-    question_object = generic.GenericForeignKey('question_type', 'question_id')
-    answer_type = models.ForeignKey(ContentType)
+    question_object = generic.GenericForeignKey('question_type', 'question_id', related_name="asQuestion")
+    answer_type = models.ForeignKey(ContentType, related_name="asAnswer")
     answer_id = models.PositiveIntegerField()
-    answer_object = generic.GenericForeignKey('answer_type', 'answer_id')    
+    answer_object = generic.GenericForeignKey('answer_type', 'answer_id', related_name="asAnswer")    
     
     def __unicode__(self):
         return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.statement)  
