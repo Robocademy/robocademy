@@ -15,4 +15,9 @@ $(function() {
         onMute: function(){}, // after the player is muted
         onUnMute: function(){} // after the player is unmuted
     });
+    $("#youtube-player-container").onPlayerEnded()
+    {
+        console.log('player ended');
+        alert('ended');
+    }
 });
