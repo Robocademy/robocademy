@@ -3,6 +3,7 @@ from django.template import RequestContext
 import json
 from models import Device, Connection, UsersCode, CodeStatus, CodeExample, CmdStatus, SerialMonitor, ExecutedCode, StartCode
 from django.shortcuts import render_to_response
+from django.contrib.admin.views.decorators import staff_member_required
 
 def get_dropdown_tree(request):
     tree = [[device.name, [configuration.get_dict() for configuration in device.get_configurations()]] for device in Device.objects.all()]
@@ -133,7 +134,8 @@ def is_title_valid(request, connection_id):
         reason = ''
     response_data = {'is_valid': is_valid, 'reason': reason}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")    
-    
+
+@staff_member_required    
 def set_start_code(request, connection_id):
     connection = Connection.objects.get(id=connection_id)
     start_code = StartCode.objects.get(connection=connection)
