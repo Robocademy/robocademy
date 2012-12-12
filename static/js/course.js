@@ -22,7 +22,7 @@ function setQuestion()
         var answer = lesson.answer_choices[i];
         $("#video_"+lesson_order).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
     }
-    $("#video_"+lesson_order).append('</ul></div>');
+    $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+lesson.answer_choices.length+'</span> to go</p>');
 }
 
 function getData()
@@ -64,7 +64,7 @@ function getData()
         console.log(jQuery.inArray(parseInt($(this).val()), answer_ids));
         if (jQuery.inArray(parseInt($(this).val()), answer_ids) < 0)
         {
-            alert('wrong');
+            //alert('wrong');
             lesson = lessons[lesson_order - 1];
             //alert(lesson.video_id);
             $(this).parent().addClass('wrong_checkbox');
@@ -85,7 +85,7 @@ function getData()
             $(this).parent().prepend('<strong>Wrong:</strong>');
             $(this).remove();            
         } else {
-            alert('correct');
+            //alert('correct');
             $(this).parent().addClass('correct_checkbox');
             $(this).parent().prepend('<strong>Correct:</strong>');
             $(this).remove();             
