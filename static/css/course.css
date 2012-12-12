@@ -27,8 +27,7 @@ padding:5px;
 text-align:center;
 }
 
-#abc {
-width:600px;
-height:450px;
-background:green;
+.wrong_checkbox {
+background:red;
+color:#FFF;
 }

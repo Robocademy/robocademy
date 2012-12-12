@@ -16,13 +16,13 @@ function setQuestion()
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
-    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><div style="font-size:1.25em">');
+    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>');
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
         var answer = lesson.answer_choices[i];
-        $("#video_"+lesson_order).append('<input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'<br/>');
+        $("#video_"+lesson_order).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
     }
-    $("#video_"+lesson_order).append('</div>');
+    $("#video_"+lesson_order).append('</ul></div>');
 }
 
 function getData()
@@ -65,7 +65,7 @@ function getData()
         {
             lesson = lessons[lesson_order - 1];
             alert(lesson.video_id);
-            //$(this).parent().parent().html('');
+            $(this).parent().addClass('wrong_checkbox');
             $('.small_video').tubeplayer({
                 autoPlay: true,
                 width: 150, // the width of the player
@@ -79,7 +79,8 @@ function getData()
                 onSeek: function(time){}, // after the video has been seeked to a defined point
                 onMute: function(){}, // after the player is muted
                 onUnMute: function(){} // after the player is unmuted
-            });            
+            });  
+                      
         } else {
             
         }
