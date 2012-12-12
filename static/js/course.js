@@ -4,12 +4,17 @@ var answer_ids = {}
 var left_to_go = 0;
 function nextLesson()
 {
-    $('.answer_checkbox').remove();
-    $('#video_'+lesson_order).hide();
-    lesson_order += 1;
-    //alert('#video_'+lesson_order)
-    $('#video_'+lesson_order).show();
-    
+    if (lesson_order == lessons.length) {
+        $('#video_'+lesson_order).html('Congrats! You finished the course.');
+    } else {
+        $('.small_video').tubeplayer("stop")
+        $('.answer_checkbox').remove();
+        $('#video_'+lesson_order).hide();
+        lesson_order += 1;
+        //alert('#video_'+lesson_order)
+        $('#video_'+lesson_order).show();
+        $('#video_'+lesson_order).tubeplayer("play");
+    }
 }
 
 function setQuestion()
