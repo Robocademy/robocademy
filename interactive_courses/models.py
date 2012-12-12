@@ -93,15 +93,18 @@ class QuestionAndAnswer(models.Model):
         return question_object.checkboxes.all().order_by('order').values_list('id', 'question')
         
     def get_answer_ids(self):
-        return question_object.checkboxes.all().values_list('id', flat=True)
+        return answer_object.checkboxes.all().values_list('id', flat=True)
     
-class CheckboxQuestion(models.Model):
-    checkboxes = models.ManyToManyField('Checkbox')
+class CheckboxQuestion2(models.Model):
+    checkboxes = models.ManyToManyField('Checkbox2')
     
-class CheckboxAnswer(models.Model):
-    correct_checkboxes = models.ManyToManyField('Checkbox')    
+class CheckboxAnswer2(models.Model):
+    correct_checkboxes = models.ManyToManyField('Checkbox2')    
     
-class Checkbox(models.Model):
-    question = models.ForeignKey(CheckboxQuestion)
+class Checkbox2(models.Model):
+    
     order = models.PositiveIntegerField()
+    value = models.CharField(50)
     
+    def __unicode__(self):
+        return self.value
