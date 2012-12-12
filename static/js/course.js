@@ -65,7 +65,7 @@ function getData()
         {
             lesson = lessons[lesson_order - 1];
             alert(lesson.video_id);
-            $(this).parent().parent().html('');
+            //$(this).parent().parent().html('');
             $('#abc').tubeplayer({
                 autoPlay: true,
                 width: 600, // the width of the player
