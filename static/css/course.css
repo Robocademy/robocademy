@@ -7,16 +7,13 @@ list-style:none;
 body {
 font:.8em Arial, sans-serif;
 text-align:center;
-margin:50px 0;
+margin:0;
 }
 
 .video {
 margin:0 auto;
 text-align:left;
-width:600px;
-height:450px;
-background:#dcdcdc;
-border:1px solid #696969;
+background:#FFF;
 }
 
 strong {

@@ -45,8 +45,8 @@ function getData()
             $("body").append("<div id='video_"+lesson.order+"' class='video'></div>");
             
             $("#video_"+lesson.order).tubeplayer({
-                width: 600, // the width of the player
-                height: 450, // the height of the player
+                width: width, // the width of the player
+                height: height, // the height of the player
                 allowFullScreen: "true", // true by default, allow user to go full screen
                 initialVideo: lesson.video_id, // the video that is loaded into the player
                 preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
@@ -107,6 +107,8 @@ function getData()
 }	
 
 $(function() {
+    var width = $(window).width();
+    var height = $(window).height();
     getData()
     
     
