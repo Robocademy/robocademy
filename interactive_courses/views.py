@@ -12,3 +12,8 @@ def index(request):
 def course(request, slug):
     context = RequestContext(request, {'course': Course.objects.get(slug=slug)})
     return render_to_response('interactive_courses/course_embed.html', context)
+    
+def get_course_data(request, slug):
+    course = Course.objects.get(slug=slug)
+    response_data = {'lessons': [i.get_dict() for i in course.get_lessons()]}
+    return HttpResponse(json.dumps(response_data), mimetype="application/json")
