@@ -16,7 +16,7 @@ class Course(models.Model):
         return '/interactive_courses/%s/' % (self.slug)
         
     def get_lessons(self):
-        return Lesson(course=self).order_by('order')
+        return Lesson.objects.filter(course=self).order_by('order')
     
 class CourseAuthorRelationship(models.Model):
     course = models.ForeignKey(Course)
