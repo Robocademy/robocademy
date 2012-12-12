@@ -22,7 +22,7 @@ function setQuestion()
         var answer = lesson.answer_choices[i];
         $("#video_"+lesson_order).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
     }
-    $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+lesson.answer_choices.length+'</span> to go</p>');
+    $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+answer_ids.length+'</span> to go</p>');
 }
 
 function getData()
