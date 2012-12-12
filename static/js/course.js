@@ -37,7 +37,7 @@ function getData()
             var lesson = lessons[i];
             $("body").append("<div id='video_"+lesson.order+"' class='video'></div>");
             
-            $(".small_video").tubeplayer({
+            $("#video_"+lesson.order).tubeplayer({
                 width: 600, // the width of the player
                 height: 450, // the height of the player
                 allowFullScreen: "true", // true by default, allow user to go full screen
@@ -66,7 +66,7 @@ function getData()
             lesson = lessons[lesson_order - 1];
             alert(lesson.video_id);
             //$(this).parent().parent().html('');
-            $('#abc').tubeplayer({
+            $('.small_video').tubeplayer({
                 autoPlay: true,
                 width: 600, // the width of the player
                 height: 450, // the height of the player
