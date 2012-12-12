@@ -64,6 +64,7 @@ function getData()
         if (jQuery.inArray($(this).val(), answer_ids) == -1)
         {
             lesson = lessons[lesson_order - 1];
+            alert(lesson.video_id);
             $(this).parent().parent().html('');
             $('#abc').tubeplayer({
                 autoPlay: true,
