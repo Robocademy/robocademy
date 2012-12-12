@@ -65,7 +65,7 @@ function getData()
         {
             alert('blah');
             lesson = lessons[lesson_order - 1];
-            $(this).parent().parent().tubeplayer({
+            $(this).parent().tubeplayer({
                 autoPlay: true,
                 width: 600, // the width of the player
                 height: 450, // the height of the player
