@@ -2,7 +2,7 @@ var lesson_order = 0;
 
 function nextLesson()
 {
-    alert('hi');
+    //alert('hi');
     console.log('hi');
     console.log(lesson_order);
     $('#video_'+lesson_order).hide();
@@ -24,7 +24,6 @@ function getData()
             $("body").append("<div id='video_"+lesson.order+" class='video'></div>");
             
             $("#video_"+lesson.order).tubeplayer({
-                autoPlay: true,
                 width: 600, // the width of the player
                 height: 450, // the height of the player
                 allowFullScreen: "true", // true by default, allow user to go full screen
@@ -44,6 +43,6 @@ function getData()
 
 $(function() {
     getData()
-    nextLesson();
+    //nextLesson();
 
 });
