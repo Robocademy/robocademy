@@ -1,3 +1,12 @@
+var lesson_order = 0;
+
+function nextLesson()
+{
+    $('#video_'+lesson_order).hide();
+    lesson_order += 1;
+    $('#video_'+lesson_order).show();
+}
+
 function getData()
 {
     $.ajax({
