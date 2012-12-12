@@ -27,7 +27,7 @@ function getData()
                 allowFullScreen: "true", // true by default, allow user to go full screen
                 initialVideo: lesson.video_id, // the video that is loaded into the player
                 preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
-                onPlayerEnded: function(){alert('ended');nextLesson();},
+                onPlayerEnded: function(){nextLesson();},
                 onPlay: function(id){}, // after the play method is called
                 onPause: function(){}, // after the pause method is called
                 onSeek: function(time){}, // after the video has been seeked to a defined point
