@@ -62,7 +62,7 @@ function getData()
         console.log(answer_ids);
         console.log(parseInt($(this).val()));
         console.log(jQuery.inArray(parseInt($(this).val()), answer_ids));
-        if (jQuery.inArray($(this).val(), answer_ids) < 0)
+        if (jQuery.inArray(parseInt($(this).val()), answer_ids) < 0)
         {
             alert('wrong');
             lesson = lessons[lesson_order - 1];
