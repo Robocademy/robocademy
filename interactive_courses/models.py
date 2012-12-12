@@ -63,6 +63,7 @@ class Lesson(models.Model):
         for field in instance._meta.many_to_many:
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
         d.update({'video_id': Video.objects.filter(lesson=self)[0].url})
+        d.update({'question': QuestionAndAnswer.objects.filter(lesson=self)[0].statement})
         return d
     
         
@@ -87,6 +88,12 @@ class QuestionAndAnswer(models.Model):
     
     def __unicode__(self):
         return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.statement)  
+        
+    def get_answer_choices(self):
+        return question_object.checkboxes.all().order_by('order').values_list('id', 'question')
+        
+    def get_answer_ids(self):
+        return question_object.checkboxes.all().values_list('id', flat=True)
     
 class CheckboxQuestion(models.Model):
     checkboxes = models.ManyToManyField('Checkbox')
