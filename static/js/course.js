@@ -31,6 +31,6 @@ function getData()
 
 $(function() {
     getData()
-    console.log($('body').html());
+    alert($('body').html());
 
 });
