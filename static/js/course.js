@@ -89,9 +89,14 @@ function getData()
         } else {
             //alert('correct');
             left_to_go -= 1;
+            
+            $('.left_to_go').text(left_to_go);
             $(this).parent().addClass('correct_checkbox');
             $(this).parent().prepend('<strong>Correct:</strong>');
-            $(this).remove();             
+            $(this).remove();
+            if (left_to_go == 0) {
+                nextLesson();
+            }        
         }
     });
 }	
