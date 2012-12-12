@@ -20,7 +20,7 @@ function setQuestion()
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
         var answer = lesson.answer_choices[i];
-        $("#video_"+lesson_order).append('<input type="checkbox" value="'+answer.id+'" class="answer_checkbox" /> '+answer.value+'<br/>');
+        $("#video_"+lesson_order).append('<input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'<br/>');
     }
     $("#video_"+lesson_order).append('</div>');
 }
