@@ -20,6 +20,10 @@ strong {
 font-weight:bold;
 }
 
+.continue {
+font-size:1.5em;
+}
+
 .small_video {
 float:right;
 width:150;

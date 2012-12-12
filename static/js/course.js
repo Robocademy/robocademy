@@ -5,6 +5,12 @@ var lesson_order = 1;
 var lessons = {}
 var answer_ids = {}
 var left_to_go = 0;
+
+function askToContinue()
+{
+    $('#video_'+lesson_order).html('<div style="text-align:center"><p>Good job! Do you want to continue?</p><input type="button" class="continue" value="Continue" /></div>');
+}
+
 function nextLesson()
 {
     if (lesson_order == lessons.length) {
