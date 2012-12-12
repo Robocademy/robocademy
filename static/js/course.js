@@ -20,6 +20,7 @@ function getData()
             $("body").append("<div id='video_"+lesson.order+" class='video'></div>");
             
             $("#video_"+lesson.order).tubeplayer({
+                autoPlay: true,
                 width: 600, // the width of the player
                 height: 450, // the height of the player
                 allowFullScreen: "true", // true by default, allow user to go full screen
