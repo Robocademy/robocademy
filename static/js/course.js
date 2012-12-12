@@ -1,3 +1,6 @@
+var width;
+var height;
+
 var lesson_order = 1;
 var lessons = {}
 var answer_ids = {}
@@ -107,8 +110,8 @@ function getData()
 }	
 
 $(function() {
-    var width = $(window).width();
-    var height = $(window).height();
+    width = $(window).width();
+    height = $(window).height();
     getData()
     
     
