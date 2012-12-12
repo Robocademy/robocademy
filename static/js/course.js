@@ -64,7 +64,7 @@ function getData()
         if (jQuery.inArray($(this).val(), answer_ids) == -1)
         {
             lesson = lessons[lesson_order - 1];
-            alert(lesson.video_id);
+            //alert(lesson.video_id);
             $(this).parent().addClass('wrong_checkbox');
             $('.small_video').tubeplayer({
                 autoPlay: true,
@@ -83,6 +83,7 @@ function getData()
             $(this).parent().prepend('<strong>Wrong:</strong>');
             $(this).remove();            
         } else {
+            $(this).parent().addClass('correct_checkbox');
             $(this).parent().prepend('<strong>Correct:</strong>');
             $(this).remove();             
         }
