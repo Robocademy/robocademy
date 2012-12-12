@@ -31,6 +31,7 @@ function getData()
 
 $(function() {
     getData()
-    alert($('body').html());
+    setTimeout( alert($('body').html()), 2000 );
+    
 
 });
