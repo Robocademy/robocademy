@@ -59,7 +59,26 @@ function getData()
       }
     });
     $('.checkbox_answer').live('click', function() {
-        alert($(this));
+        if (!(jQuery.inArray($(this).value(), answer_ids))
+        {
+            lesson = lessons[lesson_order - 1];
+            $("#video_"+lesson_order).tubeplayer({
+                autoPlay: true,
+                width: 600, // the width of the player
+                height: 450, // the height of the player
+                allowFullScreen: "true", // true by default, allow user to go full screen
+                initialVideo: lesson.video_id, // the video that is loaded into the player
+                preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
+                onPlayerEnded: function(){setQuestion();},
+                onPlay: function(id){}, // after the play method is called
+                onPause: function(){}, // after the pause method is called
+                onSeek: function(time){}, // after the video has been seeked to a defined point
+                onMute: function(){}, // after the player is muted
+                onUnMute: function(){} // after the player is unmuted
+            });            
+        } else {
+            
+        }
     });
 }	
 
