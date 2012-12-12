@@ -87,7 +87,7 @@ class QuestionAndAnswer(models.Model):
     answer_object = generic.GenericForeignKey('answer_type', 'answer_id')    
     
     def __unicode__(self):
-        return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.statement)  
+        return '%s: %s. %s %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.statement)  
         
     def get_answer_choices(self):
         return question_object.checkboxes.all().order_by('order').values_list('id', 'question')
