@@ -25,13 +25,14 @@ function getData()
                 onUnMute: function(){} // after the player is unmuted
             });
         }
+        alert($('body').html());
       }
     });
 }	
 
 $(function() {
     getData()
-    setTimeout( alert($('body').html()), 2000 );
+    
     
 
 });
