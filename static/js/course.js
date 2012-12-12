@@ -1,3 +1,7 @@
+var lesson_order = 1;
+
+
+
 function getData()
 {
     $.ajax({
