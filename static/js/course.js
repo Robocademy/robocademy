@@ -1,6 +1,11 @@
-var lesson_order = 1;
+var lesson_order = 0;
 
-
+function nextLesson()
+{
+    $('#video_'+lesson.order).hide();
+    lesson_order += 1;
+    $('#video_'+lesson.order).show();
+}
 
 function getData()
 {
@@ -12,7 +17,7 @@ function getData()
         for (var i = 0; i < lessons.length; i++)
         {
             var lesson = lessons[i];
-            $("body").append("<div id='video_"+lesson.order+"'></div>");
+            $("body").append("<div id='video_"+lesson.order+" class='video'></div>");
             
             $("#video_"+lesson.order).tubeplayer({
                 width: 600, // the width of the player
@@ -22,7 +27,7 @@ function getData()
                 preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
                 onPlay: function(id){}, // after the play method is called
                 onPause: function(){}, // after the pause method is called
-                onPlayerEnded: function(){$("#youtube-player-container").html('What is the parts');}, // after the player is stopped
+                onPlayerEnded: function(){nextLesson();}, // after the player is stopped
                 onSeek: function(time){}, // after the video has been seeked to a defined point
                 onMute: function(){}, // after the player is muted
                 onUnMute: function(){} // after the player is unmuted
