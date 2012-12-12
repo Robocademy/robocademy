@@ -40,6 +40,6 @@ function getData()
 
 $(function() {
     getData()
-    
+    nextLesson();
 
 });
