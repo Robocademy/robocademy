@@ -63,7 +63,6 @@ function getData()
         console.log(jQuery.inArray($(this).val(), answer_ids));
         if (jQuery.inArray($(this).val(), answer_ids) == -1)
         {
-            alert('blah');
             lesson = lessons[lesson_order - 1];
             $(this).parent().parent().html('');
             $(this).parent().parent().tubeplayer({
