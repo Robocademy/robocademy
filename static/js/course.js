@@ -4,6 +4,7 @@ function nextLesson()
 {
     $('#video_'+lesson_order).hide();
     lesson_order += 1;
+    alert('#video_'+lesson_order)
     $('#video_'+lesson_order).show();
 }
 
