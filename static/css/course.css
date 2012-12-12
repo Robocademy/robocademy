@@ -10,3 +10,9 @@ width:600px;
 height:450px;
 background:orange;
 }
+
+.question_statement {
+font-size:1.5em;
+padding:5px;
+text-align:center;
+}

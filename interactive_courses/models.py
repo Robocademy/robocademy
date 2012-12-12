@@ -63,7 +63,13 @@ class Lesson(models.Model):
         for field in instance._meta.many_to_many:
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
         d.update({'video_id': Video.objects.filter(lesson=self)[0].url})
+       
         d.update({'question': QuestionAndAnswer.objects.filter(lesson=self)[0].statement})
+        try:
+            d.update({'answer_choices': QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_choices()})
+            d.update({'answer_ids': QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()})
+        except:
+            pass
         return d
     
         
@@ -90,10 +96,10 @@ class QuestionAndAnswer(models.Model):
         return '%s: %s. %s %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.statement)  
         
     def get_answer_choices(self):
-        return question_object.checkboxes.all().order_by('order').values_list('id', 'question')
+        return [{'id': i.id, 'value': i.value} for i in self.question_object.checkboxes.all().order_by('order')]
         
     def get_answer_ids(self):
-        return answer_object.checkboxes.all().values_list('id', flat=True)
+        return [i.id for i in self.answer_object.correct_checkboxes.all().order_by('order')]
     
 class CheckboxQuestion2(models.Model):
     checkboxes = models.ManyToManyField('Checkbox2')
@@ -104,7 +110,7 @@ class CheckboxAnswer2(models.Model):
 class Checkbox2(models.Model):
     
     order = models.PositiveIntegerField()
-    value = models.CharField(50)
+    value = models.CharField(max_length=50)
     
     def __unicode__(self):
         return self.value
