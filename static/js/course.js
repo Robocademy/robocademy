@@ -2,8 +2,10 @@ var lesson_order = 0;
 
 function nextLesson()
 {
+    console.log(lesson_order);
     $('#video_'+lesson_order).hide();
     lesson_order += 1;
+    console.log(lesson_order);
     $('#video_'+lesson_order).show();
 }
 
