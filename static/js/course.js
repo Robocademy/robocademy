@@ -24,6 +24,10 @@ function getData()
                 onMute: function(){}, // after the player is muted
                 onUnMute: function(){} // after the player is unmuted
             });
+            if (lesson.order != 1)
+            {
+                $("#video_"+lesson.order).hide();
+            }
         }
         alert($('body').html());
       }
