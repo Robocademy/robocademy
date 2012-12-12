@@ -16,7 +16,7 @@ function setQuestion()
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
-    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div style="font-size:1.25em">');
+    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><div style="font-size:1.25em">');
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
         var answer = lesson.answer_choices[i];
@@ -37,7 +37,7 @@ function getData()
             var lesson = lessons[i];
             $("body").append("<div id='video_"+lesson.order+"' class='video'></div>");
             
-            $("#video_"+lesson.order).tubeplayer({
+            $(".small_video").tubeplayer({
                 width: 600, // the width of the player
                 height: 450, // the height of the player
                 allowFullScreen: "true", // true by default, allow user to go full screen

@@ -11,6 +11,11 @@ height:450px;
 background:orange;
 }
 
+.small_video {
+width:150;
+height:113px;
+}
+
 .question_statement {
 font-size:1.5em;
 padding:5px;
