@@ -94,7 +94,7 @@ function getData()
         } else {
             //alert('correct');
             left_to_go -= 1;
-            $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
+            $('.n_to_go').text(left_to_go);
             $('.left_to_go').text(left_to_go);
             $(this).parent().addClass('correct_checkbox');
             $(this).parent().prepend('<strong>Correct:</strong>');
