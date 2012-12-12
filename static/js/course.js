@@ -83,7 +83,8 @@ function getData()
             $(this).parent().prepend('<strong>Wrong:</strong>');
             $(this).remove();            
         } else {
-            
+            $(this).parent().prepend('<strong>Correct:</strong>');
+            $(this).remove();             
         }
     });
 }	
