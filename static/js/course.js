@@ -60,7 +60,7 @@ function getData()
     });
     $('.checkbox_answer').live('click', function() {
         console.log(answer_ids);
-        console.log($(this).val());
+        console.log(parseInt($(this).val()));
         console.log(jQuery.inArray($(this).val(), answer_ids));
         if (jQuery.inArray($(this).val(), answer_ids) == -1)
         {
