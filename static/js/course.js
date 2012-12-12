@@ -68,8 +68,8 @@ function getData()
             //$(this).parent().parent().html('');
             $('.small_video').tubeplayer({
                 autoPlay: true,
-                width: 600, // the width of the player
-                height: 450, // the height of the player
+                width: 150, // the width of the player
+                height: 113, // the height of the player
                 allowFullScreen: "true", // true by default, allow user to go full screen
                 initialVideo: lesson.video_id, // the video that is loaded into the player
                 preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
