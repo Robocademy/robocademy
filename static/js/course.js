@@ -2,6 +2,7 @@ var lesson_order = 0;
 
 function nextLesson()
 {
+    alert('hi');
     console.log('hi');
     console.log(lesson_order);
     //$('#video_'+lesson_order).hide();
