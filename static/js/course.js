@@ -1,6 +1,7 @@
 var lesson_order = 1;
 var lessons = {}
 var answer_ids = {}
+var left_to_go = 0;
 function nextLesson()
 {
     $('.answer_checkbox').remove();
@@ -22,7 +23,8 @@ function setQuestion()
         var answer = lesson.answer_choices[i];
         $("#video_"+lesson_order).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
     }
-    $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+answer_ids.length+'</span> to go</p>');
+    left_to_go = answer_ids.length;
+    $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
 }
 
 function getData()
@@ -86,6 +88,7 @@ function getData()
             $(this).remove();            
         } else {
             //alert('correct');
+            left_to_go -= 1;
             $(this).parent().addClass('correct_checkbox');
             $(this).parent().prepend('<strong>Correct:</strong>');
             $(this).remove();             
