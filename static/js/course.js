@@ -80,7 +80,8 @@ function getData()
                 onMute: function(){}, // after the player is muted
                 onUnMute: function(){} // after the player is unmuted
             });  
-            $(this).parent().prepend('<strong>Wrong:</strong>');         
+            $(this).parent().prepend('<strong>Wrong:</strong>');
+            $(this).remove();            
         } else {
             
         }
