@@ -30,7 +30,6 @@ function getData()
                 onPlayerEnded: function(){alert('ended');nextLesson();},
                 onPlay: function(id){}, // after the play method is called
                 onPause: function(){}, // after the pause method is called
-                onPlayerEnded: function(){$("#youtube-player-container").html('What is the parts');}, // after the player is stopped
                 onSeek: function(time){}, // after the video has been seeked to a defined point
                 onMute: function(){}, // after the player is muted
                 onUnMute: function(){} // after the player is unmuted
