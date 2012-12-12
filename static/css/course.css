@@ -1,5 +1,9 @@
 @import url('reset.css');
 
+ul, li {
+list-style:none;
+}
+
 body {
 font:.8em Arial, sans-serif;
 text-align:center;
@@ -13,6 +17,10 @@ width:600px;
 height:450px;
 background:#dcdcdc;
 border:1px solid #696969;
+}
+
+strong {
+font-weight:bold;
 }
 
 .small_video {
