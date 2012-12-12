@@ -2,16 +2,21 @@
 
 body {
 font:.8em Arial, sans-serif;
+text-align:center;
+margin:50px 0;
 }
 
 .video {
-
+margin:0 auto;
+text-align:left;
 width:600px;
 height:450px;
-background:orange;
+background:#dcdcdc;
+border:1px solid #696969;
 }
 
 .small_video {
+float:right;
 width:150;
 height:113px;
 }
