@@ -59,6 +59,7 @@ function getData()
       }
     });
     $('.checkbox_answer').live('click', function() {
+        console.log(answer_ids);
         if (!(jQuery.inArray($(this).value(), answer_ids)))
         {
             lesson = lessons[lesson_order - 1];
