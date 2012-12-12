@@ -62,8 +62,9 @@ function getData()
         console.log(answer_ids);
         console.log(parseInt($(this).val()));
         console.log(jQuery.inArray(parseInt($(this).val()), answer_ids));
-        if (jQuery.inArray($(this).val(), answer_ids) == -1)
+        if (jQuery.inArray($(this).val(), answer_ids) < 0)
         {
+            alert('wrong');
             lesson = lessons[lesson_order - 1];
             //alert(lesson.video_id);
             $(this).parent().addClass('wrong_checkbox');
@@ -84,6 +85,7 @@ function getData()
             $(this).parent().prepend('<strong>Wrong:</strong>');
             $(this).remove();            
         } else {
+            alert('correct');
             $(this).parent().addClass('correct_checkbox');
             $(this).parent().prepend('<strong>Correct:</strong>');
             $(this).remove();             
