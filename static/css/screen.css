@@ -13,6 +13,10 @@ p.big a:link, p.big a:visited {
 text-decoration:underline;
 }
 
+p.big a:hover {
+text-decoration:none;
+}
+
 #message {
 top:0;
 left:500px;
