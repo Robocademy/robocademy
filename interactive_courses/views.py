@@ -34,7 +34,10 @@ def admin_save(request, slug):
     # get the lessons
     for lesson in course.get_lessons():
         lesson.title = request.POST['lesson_%s_title' % (lesson.order)]
+        video = Video.objects.filter(lesson=lesson)[0]
+        video.url = request.POST['lesson_%s_video_id' % (lesson.order)]
+        video.save()
         lesson.save()
-    
+         
     
     return HttpResponse(str(request.POST))
