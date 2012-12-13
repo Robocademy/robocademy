@@ -142,8 +142,8 @@ function getData()
         lesson = lessons[lesson_order - 1];
         //alert($(this).parent().parent().attr('id'));
         //alert(lesson.video_id);
-        $(this).parent().parent().html('');
-        $(this).parent().parent().tubeplayer({
+        $(this).parent().parent().html('<div class="new_video"></div>');
+        $('.new_video').tubeplayer({
             width: width, // the width of the player
             height: height, // the height of the player
             allowFullScreen: "true", // true by default, allow user to go full screen
@@ -158,7 +158,7 @@ function getData()
         });
     });
     $('.reanswer').live('click', function() {
-        alert('reanswer');
+        //alert('reanswer');
         setQuestion();
     });   
 }	
