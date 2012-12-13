@@ -9,7 +9,7 @@
 </head>
 <body>
 <form>
-Course title: <input type="text" value="{{ course.title }}" />
+<input type="button" value="Save" style="float:right" />Course title: <input type="text" value="{{ course.title }}" />
 <ul>
 {% for lesson in course.get_lessons %}
 <li>{{ lesson.order }}. <input type="text" value="{{ lesson.title }}" class="long" />
@@ -19,7 +19,7 @@ Course title: <input type="text" value="{{ course.title }}" />
 <tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
 <tr><th>Answer:</th><td>
 {% for x in lesson.get_answer_choices %}
-<input type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" value="{{ x.value }}" /><br/>
+<input name="lesson_{{ lesson.id }}_answer_{{ x.id }}" type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.id }}_answer_choice_{{ x.id }}" value="{{ x.value }}" /><br/>
 {% endfor %}
 </td></tr>
 </table>
