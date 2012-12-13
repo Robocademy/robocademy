@@ -24,7 +24,7 @@
 <input name="lesson_{{ lesson.id }}_answer_{{ x.id }}" type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.id }}_answer_choice_{{ x.id }}" value="{{ x.value }}" /><br/>
 {% endfor %}
 </div>
-<input type="button" value="Add answer choice" class="add_answer_choice" />
+<input type="button" value="Add answer choice" class="add_answer_choice" order="{{ lesson.order }}" />
 </td></tr>
 </table>
 </li>
