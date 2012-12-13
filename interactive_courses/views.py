@@ -43,7 +43,7 @@ def admin_save(request, slug):
         
         # change answer choices
         for answer_choice in QuestionAndAnswer.objects.filter(lesson=lesson)[0].question_object.checkboxes.all().order_by('order'):
-            answer_choice.value = request.POST['lesson_%s_title' % (lesson.order)]
+            answer_choice.value = request.POST['lesson_%s_answer_choice_%s' % (lesson.order, answer_choice.order)]
             answer_choice.save()
         
         lesson.save()
