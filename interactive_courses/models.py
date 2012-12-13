@@ -71,6 +71,9 @@ class Lesson(models.Model):
         except:
             pass
         return d
+        
+    def get_video_id(self):
+        return Video.objects.filter(lesson=self)[0].url
     
         
 class Video(models.Model):
