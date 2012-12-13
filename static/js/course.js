@@ -6,6 +6,8 @@ var lessons = {}
 var answer_ids = {}
 var left_to_go = 0;
 
+var responsive_quizzing = false;
+
 function askToContinue()
 {
     $('#video_'+lesson_order).html('<div style="text-align:center"><p>Good job! Do you want to continue?</p><input type="button" class="continue" value="Continue" /></div>');
@@ -103,11 +105,15 @@ function getData()
         } else {
             //alert('correct');
             left_to_go -= 1;
-            $('.n_to_go').text(left_to_go);
+            if (responsive_quizzing) {
+                $('.n_to_go').text(left_to_go);
+            }
             $('.left_to_go').text(left_to_go);
-            $(this).parent().addClass('correct_checkbox');
-            $(this).parent().prepend('<strong>Correct:</strong>');
-            $(this).remove();
+            if (responsive_quizzing) {
+                $(this).parent().addClass('correct_checkbox');
+                $(this).parent().prepend('<strong>Correct:</strong>');
+                $(this).remove();
+            }
             if (left_to_go == 0) {
                 askToContinue();
             }        
