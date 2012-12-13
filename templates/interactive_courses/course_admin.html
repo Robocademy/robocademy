@@ -14,7 +14,7 @@
 <ul>
 {% for lesson in course.get_lessons %}
 <li id="lesson_{{ lesson.order }}"><div style="float:right">
-<input type="button" value="Delete lesson" class="delete_lesson">
+<input type="button" lesson="{{ lesson.id }}" value="Delete lesson" class="delete_lesson">
 <input type="button" value="Append new lesson" class="append_new_lesson">
 <input type="button" value="Prepend new lesson" class="prepend_new_lesson">
 </div>
