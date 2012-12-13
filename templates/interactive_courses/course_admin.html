@@ -26,7 +26,9 @@
 <tr><th>Answer:</th><td>
 <div class="answer_choices">
 {% for x in lesson.get_answer_choices %}
-<input name="lesson_{{ lesson.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}" /><br/>
+<input name="lesson_{{ lesson.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}" />
+<input type="button" value="X" />
+<br/>
 {% endfor %}
 </div>
 <input type="button" value="Add answer choice" class="add_answer_choice" order="{{ lesson.order }}" />
