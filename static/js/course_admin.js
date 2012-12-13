@@ -2,7 +2,7 @@ function save()
 {
 	var content = $("form").serialize();
 	$.post('save/', content,function(response){
-        alert('saving');
+        $('#message').text('Saved').show(0).delay(5000).hide(0);        
 	});    
 }
 

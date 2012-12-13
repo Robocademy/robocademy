@@ -9,6 +9,15 @@ font:.8em Arial, sans-serif;
 margin:0;
 }
 
+#message {
+top:0;
+left:500px;
+width:100px;
+position:absolute;
+background:orange;
+display:none;
+}
+
 ul {
 border-bottom:1px solid #000;
 }
