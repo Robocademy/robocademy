@@ -90,6 +90,7 @@ function getData()
             //alert('wrong');
             lesson = lessons[lesson_order - 1];
             //alert(lesson.video_id);
+            
             if (responsive_quizzing) {
                 $(this).parent().addClass('wrong_checkbox');
                 $('.small_video').tubeplayer({
@@ -138,6 +139,7 @@ function getData()
         }
     });
     $('.rewatch').live('click', function() {
+        lesson = lessons[lesson_order - 1];
         $("#video_"+lesson_order).tubeplayer({
             width: width, // the width of the player
             height: height, // the height of the player
