@@ -10,7 +10,7 @@
 </head>
 <body>
 <form>
-<input type="button" value="Save (CTRL-S)" style="float:right" />Course title: <input type="text" value="{{ course.title }}" />
+<input type="button" id="save" value="Save (CTRL-S)" style="float:right" />Course title: <input type="text" value="{{ course.title }}" />
 <ul>
 {% for lesson in course.get_lessons %}
 <li>{{ lesson.order }}. <input type="text" value="{{ lesson.title }}" class="long" />
