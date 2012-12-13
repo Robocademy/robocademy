@@ -158,6 +158,8 @@ function getData()
         });
     });
     $('.reanswer').live('click', function() {
+        alert('reanswer');
+        setQuestion();
     });   
 }	
 
