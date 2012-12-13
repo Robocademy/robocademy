@@ -78,6 +78,12 @@ class Lesson(models.Model):
     def get_question(self):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].statement
         
+    def get_answer_choices(self):
+        return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_choices()
+
+    def get_answer_ids(self):
+        return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()          
+        
 class Video(models.Model):
     lesson = models.ForeignKey(Lesson)
     url = models.CharField(max_length=200)

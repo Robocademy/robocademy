@@ -16,6 +16,10 @@ Course title: <input type="text" value="{{ course.title }}" />
 <table>
 <tr><th>Video id:</th><td><input type="text" value="{{ lesson.get_video_id }}" /></td></tr>
 <tr><th>Question:</th><td><textarea>{{ lesson.get_question }}</textarea></td></tr>
+<tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
+<tr><th>Answer:</th><td>
+
+</td></tr>
 </table>
 </li>
 {% endfor %}
