@@ -37,6 +37,9 @@ def admin_save(request, slug):
         video = Video.objects.filter(lesson=lesson)[0]
         video.url = request.POST['lesson_%s_video_id' % (lesson.order)]
         video.save()
+        question = QuestionAndAnswer.objects.filter(lesson=self)[0]
+        question.statement = request.POST['lesson_%s_question' % (lesson.order)]
+        question.save()
         lesson.save()
          
     
