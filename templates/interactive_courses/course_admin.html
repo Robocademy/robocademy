@@ -11,7 +11,9 @@
 <form>
 Course title: <input type="text" value="{{ course.title }}" />
 <ul>
+{% for course in courses %}
 <li></li>
+{% endfor %}
 </ul>
 </form>
 </body>

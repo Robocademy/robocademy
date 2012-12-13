@@ -1,0 +1,47 @@
+@import url('reset.css');
+
+ul, li {
+list-style:none;
+}
+
+body {
+font:.8em Arial, sans-serif;
+text-align:center;
+margin:0;
+}
+
+.video {
+margin:0 auto;
+text-align:left;
+background:#FFF;
+}
+
+strong {
+font-weight:bold;
+}
+
+.continue, .submit {
+font-size:1.5em;
+}
+
+.small_video {
+float:right;
+width:150;
+height:113px;
+}
+
+.question_statement {
+font-size:1.5em;
+padding:5px;
+text-align:center;
+}
+
+.wrong_checkbox {
+background:red;
+color:#FFF;
+}
+
+.correct_checkbox {
+background:green;
+color:#FFF;
+}
