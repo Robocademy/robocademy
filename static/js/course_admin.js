@@ -17,7 +17,7 @@ $(function() {
     });
     $('.add_answer_choice').live('click', function() {
         var order = $(this).attr('order');
-        $(this).parent().find('.answer_choices').append('<input name="lesson_'+order+'_answer_{{ x.id }}" type="checkbox" /> <input type="text" name="lesson_'+order+'_answer_choice_" value="" /><input type="button" value="X" />')
+        $(this).parent().find('.answer_choices').append('<input name="lesson_'+order+'_answer_{{ x.id }}" type="checkbox" /> <input type="text" name="lesson_'+order+'_answer_choice_" value="" /> <input type="button" value="X" />')
     });
     $('.delete_lesson').live('click', function() {
         $(this).parent().parent().remove();
