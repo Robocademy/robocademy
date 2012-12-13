@@ -21,11 +21,11 @@
 {{ lesson.order }}. <input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="long" />
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" /></td></tr>
-<tr><th>Question:</th><td><textarea name="lesson_{{ lesson.order }}_question">{{ lesson.get_question }}</textarea></td></tr>
+<tr><th>1.</th><td><table><tr><th>Question:</th>
+<td><textarea name="lesson_{{ lesson.order }}_question">{{ lesson.get_question }}</textarea></td></tr>
 <tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
 <tr><th>Answer:</th><td>
-<table>
-<tr><td>1.</td><td>
+
 <div class="answer_choices">
 {% for x in lesson.get_answer_choices %}
 <input name="lesson_{{ lesson.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}" />
