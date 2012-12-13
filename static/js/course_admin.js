@@ -22,4 +22,10 @@ $(function() {
     $('.delete_lesson').live('click', function() {
         $(this).parent().parent().remove();
     });
+    $('.append_new_lesson').live('click', function() {
+        $(this).parent().parent().after($(this).parent().parent().html());
+    });
+    $('.prepend_new_lesson').live('click', function() {
+        $(this).parent().parent().before($(this).parent().parent().html());
+    });
 });
