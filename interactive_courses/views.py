@@ -24,4 +24,4 @@ def get_course_data(request, slug):
     
 def course_admin(request, slug):
     context = RequestContext(request, {})
-    return render_to_response('course_admin.html', context)
+    return render_to_response('interactive_courses/course_admin.html', context)
