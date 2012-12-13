@@ -23,5 +23,5 @@ def get_course_data(request, slug):
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
     
 def course_admin(request, slug):
-    context = RequestContext(request, {})
+    context = RequestContext(request, {'course': Course.objects.get(slug=slug)})
     return render_to_response('interactive_courses/course_admin.html', context)
