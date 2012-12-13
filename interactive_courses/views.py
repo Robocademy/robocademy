@@ -27,4 +27,7 @@ def course_admin(request, slug):
     return render_to_response('interactive_courses/course_admin.html', context)
     
 def admin_save(request, slug):
+    course = Course.objects.get(slug=slug)
+    course.title = request.POST['course_title']
+    course.save()
     return HttpResponse(str(request.POST))
