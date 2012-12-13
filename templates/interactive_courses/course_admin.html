@@ -13,7 +13,7 @@
 <input type="button" id="save" value="Save (CTRL-S)" style="float:right" />Course title: <input type="text" name="course_title" value="{{ course.title }}" />
 <ul>
 {% for lesson in course.get_lessons %}
-<li><div style="float:right"><input type="button" value="Delete lesson"><input type="button" value="Append new lesson"><input type="button" value="Prepend new lesson"></div>
+<li id="lesson_{{ lesson.order }}"><div style="float:right"><input type="button" value="Delete lesson"><input type="button" value="Append new lesson"><input type="button" value="Prepend new lesson"></div>
 {{ lesson.order }}. <input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="long" />
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" /></td></tr>
