@@ -29,6 +29,6 @@ $(function() {
         $(this).parent().parent().before($(this).parent().parent().html());
     });
     $('.delete_question').live('click', function() {
-        $(this).parent().parent().remove();
+        $(this).parent().parent().parent().remove();
     });
 });
