@@ -16,3 +16,7 @@ border-bottom:1px solid #000;
 li {
 border-top:1px solid #000;
 }
+
+input.long {
+width:200px;
+}
