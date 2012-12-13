@@ -74,7 +74,9 @@ class Lesson(models.Model):
         
     def get_video_id(self):
         return Video.objects.filter(lesson=self)[0].url
-    
+        
+    def get_question(self):
+        return QuestionAndAnswer.objects.filter(lesson=self)[0].statement
         
 class Video(models.Model):
     lesson = models.ForeignKey(Lesson)
