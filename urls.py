@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.contrib import admin
 from django.views.generic import RedirectView
-
+from django.views.generic.simple import redirect_to
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -13,11 +13,12 @@ urlpatterns = patterns('',
     #url(r'^$', direct_to_template, {'template': 'index.html'}),
     (r'^get_dropdown_tree/$', 'devices.views.get_dropdown_tree'),
     url(r'^new_interface/$', direct_to_template, {'template': 'courses/new_interface.html'}),
-    url(r'^$', RedirectView.as_view(url='/courses/arduino_expert/')),
+    url(r'^$', 'courses.arduino_expert'),
     (r'^login/', 'about.views.loginuser'),
     (r'^createuser/', 'about.views.createuser'),
     (r'^about/', include('about.urls')),
-    (r'^courses/', include('courses.urls')),
+    #(r'^courses/', include('courses.urls')),
+    (r'^courses[\w\d]*', RedirectView.as_view(url='/')),
     (r'^devices/', include('devices.urls')),
     (r'^interactive_courses/', include('interactive_courses.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
