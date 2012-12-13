@@ -41,7 +41,9 @@ function setQuestion()
         $("#video_"+lesson_order).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
     }
     left_to_go = answer_ids.length;
-    $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
+    if (responsive_quizzing) {
+        $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
+    }
 }
 
 function getData()
