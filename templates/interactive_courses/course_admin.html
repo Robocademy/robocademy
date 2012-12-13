@@ -20,7 +20,7 @@
 </div>
 {{ lesson.order }}. <input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="long" />
 <table>
-<tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" /></td></tr>
+<tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" />{{ lesson.get_questions }}</td></tr>
 {% for question in lesson.get_questions %}
 <tr><th>{{ question.order }}.</th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
