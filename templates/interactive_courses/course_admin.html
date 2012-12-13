@@ -23,7 +23,7 @@
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" /></td></tr>
 <tr><th>1.</th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
-<input type="button" value="Append question" class="append_question /><input type="button" value="Prepend question" class="prepend_question" /></div>
+<input type="button" value="Append question" class="append_question /><br/><input type="button" value="Prepend question" class="prepend_question" /></div>
 <table><tr><th>Question:</th>
 <td><textarea name="lesson_{{ lesson.order }}_question">{{ lesson.get_question }}</textarea></td></tr>
 <tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
