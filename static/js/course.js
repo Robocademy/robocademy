@@ -5,7 +5,7 @@ var lesson_order = 1;
 var lessons = {}
 var answer_ids = {}
 var left_to_go = 0;
-
+var wrong = false;
 var responsive_quizzing = false;
 
 function askToContinue()
@@ -30,6 +30,7 @@ function nextLesson()
 
 function setQuestion()
 {
+    wrong = false;
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
@@ -85,42 +86,52 @@ function getData()
             //alert('wrong');
             lesson = lessons[lesson_order - 1];
             //alert(lesson.video_id);
-            $(this).parent().addClass('wrong_checkbox');
-            $('.small_video').tubeplayer({
-                autoPlay: true,
-                width: 150, // the width of the player
-                height: 113, // the height of the player
-                allowFullScreen: "true", // true by default, allow user to go full screen
-                initialVideo: lesson.video_id, // the video that is loaded into the player
-                preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
-                onPlayerEnded: function(){},
-                onPlay: function(id){}, // after the play method is called
-                onPause: function(){}, // after the pause method is called
-                onSeek: function(time){}, // after the video has been seeked to a defined point
-                onMute: function(){}, // after the player is muted
-                onUnMute: function(){} // after the player is unmuted
-            });  
-            $(this).parent().prepend('<strong>Wrong:</strong>');
-            $(this).remove();            
+            if (responsive_quizzing) {
+                $(this).parent().addClass('wrong_checkbox');
+                $('.small_video').tubeplayer({
+                    autoPlay: true,
+                    width: 150, // the width of the player
+                    height: 113, // the height of the player
+                    allowFullScreen: "true", // true by default, allow user to go full screen
+                    initialVideo: lesson.video_id, // the video that is loaded into the player
+                    preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
+                    onPlayerEnded: function(){},
+                    onPlay: function(id){}, // after the play method is called
+                    onPause: function(){}, // after the pause method is called
+                    onSeek: function(time){}, // after the video has been seeked to a defined point
+                    onMute: function(){}, // after the player is muted
+                    onUnMute: function(){} // after the player is unmuted
+                });  
+                $(this).parent().prepend('<strong>Wrong:</strong>');
+                $(this).remove(); 
+            } else {
+                wrong == true;
+            }            
         } else {
             //alert('correct');
             left_to_go -= 1;
             if (responsive_quizzing) {
                 $('.n_to_go').text(left_to_go);
-            }
-            $('.left_to_go').text(left_to_go);
-            if (responsive_quizzing) {
                 $(this).parent().addClass('correct_checkbox');
                 $(this).parent().prepend('<strong>Correct:</strong>');
                 $(this).remove();
+                if (left_to_go == 0) {
+                    askToContinue();
+                }   
             }
-            if (left_to_go == 0) {
-                askToContinue();
-            }        
+     
         }
     });
     $('.continue').live('click', function() {
         nextLesson();
+    });
+    $('.sumbit').live('click', function() {
+        if (wrong || left_to_go != 0) {
+            $('#video_'+lesson_order).html('<div style="text-align:center"><p>Your answer is wrong?</p><input type="button" class="reanswer" value="Reanswer question" /><input type="button" class="rewatch" value="Rewatch video" /></div>');
+
+        } else {
+            askToContinue();
+        }
     });
 }	
 
