@@ -137,6 +137,23 @@ function getData()
             askToContinue();
         }
     });
+    $('.rewatch').live('click', function() {
+        $("#video_"+lesson_order).tubeplayer({
+            width: width, // the width of the player
+            height: height, // the height of the player
+            allowFullScreen: "true", // true by default, allow user to go full screen
+            initialVideo: lesson.video_id, // the video that is loaded into the player
+            preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
+            onPlayerEnded: function(){setQuestion();},
+            onPlay: function(id){}, // after the play method is called
+            onPause: function(){}, // after the pause method is called
+            onSeek: function(time){}, // after the video has been seeked to a defined point
+            onMute: function(){}, // after the player is muted
+            onUnMute: function(){} // after the player is unmuted
+        });
+    });
+    $('.reanswer').live('click', function() {
+    });   
 }	
 
 $(function() {
