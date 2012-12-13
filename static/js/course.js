@@ -109,7 +109,7 @@ function getData()
             $(this).parent().prepend('<strong>Correct:</strong>');
             $(this).remove();
             if (left_to_go == 0) {
-                nextLesson();
+                askToContinue();
             }        
         }
     });
