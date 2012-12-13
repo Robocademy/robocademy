@@ -13,8 +13,11 @@ Course title: <input type="text" value="{{ course.title }}" />
 <ul>
 {% for lesson in course.get_lessons %}
 <li>{{ lesson.order }}. <input type="text" value="{{ lesson.title }}" class="long" />
-<br/>Video id: <input type="text" value="{{ lesson.get_video_id }}" /><br/>
-Question: <textarea>{{ lesson.get_question }}</textarea></li>
+<table>
+<tr><th>Video id:</th><td><input type="text" value="{{ lesson.get_video_id }}" /></td></tr>
+<tr><th>Question:</th><td><textarea>{{ lesson.get_question }}</textarea></td></tr>
+</table>
+</li>
 {% endfor %}
 </ul>
 </form>
