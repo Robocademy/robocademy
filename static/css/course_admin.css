@@ -27,4 +27,6 @@ vertical-align:top;
 
 textarea {
 width:500px;
-height:200px;
+height:50px;
+border:1px solid red;
+}
