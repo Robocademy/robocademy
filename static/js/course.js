@@ -113,6 +113,9 @@ function getData()
             }        
         }
     });
+    $('.continue').live('click', function() {
+        nextLesson();
+    });
 }	
 
 $(function() {
