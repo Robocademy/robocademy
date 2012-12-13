@@ -27,4 +27,4 @@ def course_admin(request, slug):
     return render_to_response('interactive_courses/course_admin.html', context)
     
 def admin_save(request, slug):
-    return HttpResponse(request.POST)
+    return HttpResponse(str(request.POST))
