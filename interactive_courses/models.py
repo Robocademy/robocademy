@@ -110,7 +110,7 @@ class QuestionAndAnswer(models.Model):
         return '%s: %s. %s %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.statement)  
         
     def get_answer_choices(self):
-        return [{'id': i.id, 'value': i.value, 'order': i.order} for i in self.question_object.checkboxes.all().order_by('order')]
+        return [{'id': int(i.id), 'value': i.value, 'order': int(i.order)} for i in self.question_object.checkboxes.all().order_by('order')]
         
     def get_answer_ids(self):
         return [i.id for i in self.answer_object.correct_checkboxes.all().order_by('order')]
