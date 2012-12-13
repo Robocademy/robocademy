@@ -139,6 +139,7 @@ function getData()
         }
     });
     $('.rewatch').live('click', function() {
+        alert('rewatch');
         lesson = lessons[lesson_order - 1];
         $("#video_"+lesson_order).tubeplayer({
             width: width, // the width of the player
