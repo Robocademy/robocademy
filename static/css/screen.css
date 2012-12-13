@@ -5,6 +5,10 @@ background:url('../images/background.png') repeat-x;
 font:.8em Arial, sans-serif;
 }
 
+p.big {
+font-size:1.4em;
+}
+
 #message {
 top:0;
 left:500px;
