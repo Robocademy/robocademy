@@ -31,4 +31,10 @@ $(function() {
     $('.delete_question').live('click', function() {
         $(this).parent().parent().parent().remove();
     });
+    $('.append_question').live('click', function() {
+        $(this).parent().parent().parent().after($(this).parent().parent().parent().html());
+    });
+    $('.prepend_question').live('click', function() {
+        $(this).parent().parent().parent().before($(this).parent().parent().parent().html());
+    });
 });
