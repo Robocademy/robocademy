@@ -113,7 +113,7 @@ class QuestionAndAnswer(models.Model):
         return [{'id': int(i.id), 'value': i.value, 'order': int(i.order)} for i in self.question_object.checkboxes.all().order_by('order')]
         
     def get_answer_ids(self):
-        return [i.id for i in self.answer_object.correct_checkboxes.all().order_by('order')]
+        return [int(i.id) for i in self.answer_object.correct_checkboxes.all().order_by('order')]
     
 class CheckboxQuestion2(models.Model):
     checkboxes = models.ManyToManyField('Checkbox2')
