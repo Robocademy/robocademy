@@ -15,6 +15,8 @@ $(function() {
         e.preventDefault();
         return false;
     });
-    
+    $('.add_answer_choice').live('click', function() {
+        $(this).parent().find('.answer_choices').append('<input name="lesson_dd_answer_{{ x.id }}" type="checkbox" checked/> <input type="text" name="lesson__answer_choice_" value="" /><br/>')
+    });
 
 });
