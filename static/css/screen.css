@@ -9,6 +9,10 @@ p.big {
 font-size:1.4em;
 }
 
+p.big a:link, p.big a:visited {
+text-decoration:underline;
+}
+
 #message {
 top:0;
 left:500px;
