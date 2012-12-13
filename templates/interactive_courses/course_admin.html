@@ -18,7 +18,9 @@ Course title: <input type="text" value="{{ course.title }}" />
 <tr><th>Question:</th><td><textarea>{{ lesson.get_question }}</textarea></td></tr>
 <tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
 <tr><th>Answer:</th><td>
-
+{% for id, value in lesson.get_answer_choices %}
+<input type="checkbox"{% if id in lesson.get_answer_ids %} checked{% endif %}/> {{ value }}
+{% endfor %}
 </td></tr>
 </table>
 </li>
