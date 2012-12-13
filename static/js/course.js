@@ -141,7 +141,7 @@ function getData()
     $('.rewatch').live('click', function() {
         alert('rewatch');
         lesson = lessons[lesson_order - 1];
-        $("#video_"+lesson_order).tubeplayer({
+        $(this).parent().parent().tubeplayer({
             width: width, // the width of the player
             height: height, // the height of the player
             allowFullScreen: "true", // true by default, allow user to go full screen
