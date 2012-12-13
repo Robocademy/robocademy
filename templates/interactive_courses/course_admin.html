@@ -11,8 +11,8 @@
 <form>
 Course title: <input type="text" value="{{ course.title }}" />
 <ul>
-{% for course in courses %}
-<li></li>
+{% for lesson in lessons %}
+<li>{{ lesson.order }}. {{ lesson.title }}</li>
 {% endfor %}
 </ul>
 </form>
