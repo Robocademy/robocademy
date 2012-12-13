@@ -43,6 +43,8 @@ function setQuestion()
     left_to_go = answer_ids.length;
     if (responsive_quizzing) {
         $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
+    } else {
+        $("#video_"+lesson_order).append('<input type="button" class="sumbit" value="Sumbit" />');
     }
 }
 
