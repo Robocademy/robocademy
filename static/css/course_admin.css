@@ -9,6 +9,9 @@ font:.8em Arial, sans-serif;
 margin:0;
 }
 
+ul {
+border-bottom:1px solid #000;
+}
 
 li {
 border-top:1px solid #000;
