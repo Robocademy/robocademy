@@ -21,3 +21,7 @@ def get_course_data(request, slug):
     course = Course.objects.get(slug=slug)
     response_data = {'lessons': [i.get_dict() for i in course.get_lessons()]}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
+    
+def course_admin(request, slug):
+    context = RequestContext(request, {})
+    return render_to_response('course_admin.html', context)
