@@ -21,18 +21,19 @@
 {{ lesson.order }}. <input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="long" />
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" /></td></tr>
-<tr><th>1.</th><td>
+{% for question for lesson.get_questions %}
+<tr><th>{{ question.order }}.</th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
 <input type="button" value="Append question" class="append_question" />
 <input type="button" value="Prepend question" class="prepend_question" /></div>
 <table><tr><th>Question:</th>
-<td><textarea name="lesson_{{ lesson.order }}_question">{{ lesson.get_question }}</textarea></td></tr>
+<td><textarea name="lesson_{{ lesson.order }}_question_{{ question.order }}">{{ question.statement }}</textarea></td></tr>
 <tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
 <tr><th>Answer:</th><td>
 
 <div class="answer_choices">
-{% for x in lesson.get_answer_choices %}
-<input name="lesson_{{ lesson.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in lesson.get_answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}" />
+{% for x in question.answer_choices %}
+<input name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in question.answer_ids %} checked{% endif %}/> <input type="text" name="lesson_{{ lesson.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}" />
 <input type="button" value="X" />
 <br/>
 {% endfor %}
@@ -41,6 +42,7 @@
 </td></tr>
 
 </table>
+{% endfor %}
 </td></tr>
 </table>
 </li>

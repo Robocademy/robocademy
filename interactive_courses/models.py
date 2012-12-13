@@ -78,6 +78,9 @@ class Lesson(models.Model):
     def get_question(self):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].statement
         
+    def get_questions(self):
+        return [{'question': i.statement, 'answer_choices': i.get_answer_choices(), 'answer_ids': i.get_answer_ids()} for i in QuestionAndAnswer.objects.filter(lesson=self)[0]]
+        
     def get_answer_choices(self):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_choices()
 
