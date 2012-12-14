@@ -11,7 +11,7 @@
 <body>
 <form>
 <input type="button" id="save" value="Save (CTRL-S)" style="float:right" />Course title: <input type="text" name="course_title" value="{{ course.title }}" />
-<ul>
+<ol>
 {% for lesson in course.get_lessons %}
 <li id="lesson_{{ lesson.order }}"><div style="float:right">
 <input type="button" lesson="{{ lesson.id }}" value="Delete lesson" class="delete_lesson">

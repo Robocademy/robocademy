@@ -1,6 +1,10 @@
 function save()
 {
-    alert(JSON.stringify($('form').children()));
+    $('form > ol > li').each(function(index) {
+        $(this).find('input').each(function(j) {
+            alert(j);
+        }
+    });
 	var content = $("form").serialize();
 	$.post('save/', content,function(response){
         $('#message').text('Saved').show(0).delay(5000).hide(0);        
