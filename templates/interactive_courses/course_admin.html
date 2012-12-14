@@ -36,9 +36,9 @@
 <span>
 <input name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in question.answer_ids %} checked{% endif %}/> 
 <input type="text" name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}" />
-<input type="button" value="X" class="delete_answer_choice" />
+<input type="button" value="X" class="delete_answer_choice" /><br/>
 </span>
-<br/>
+
 {% endfor %}
 </div>
 <input type="button" value="Add answer choice" class="add_answer_choice" lessonorder="{{ lesson.order }}" qaorder="{{ question.order }}" />
