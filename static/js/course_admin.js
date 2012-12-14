@@ -1,5 +1,11 @@
 function save()
 {
+    var data = [];
+    data.push({
+        key:   "course_title",
+        value: $('#course_title').val()
+    });
+    alert(JSON.stringify(data));
     $('form > ol > li').each(function(index) {
         $(this).find('input').each(function(j) {
             alert($(this).val());
