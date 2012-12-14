@@ -5,12 +5,16 @@ function save()
         key:   "course_title",
         value: $('#course_title').val()
     });
-    alert(JSON.stringify(data));
+    
     $('form > ol > li').each(function(index) {
-        $(this).find('input').each(function(j) {
-            alert($(this).val());
+        var order = 1;
+        data.push({
+            key:   "lesson_title",
+            value: $(this).find('.lesson_title').val()
         });
+        
     });
+    alert(JSON.stringify(data));
 	var content = $("form").serialize();
 	$.post('save/', content,function(response){
         $('#message').text('Saved').show(0).delay(5000).hide(0);        
