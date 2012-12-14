@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 import json
-from models import Course, Lesson, Video, QuestionAndAnswer
+from models import Course, Lesson, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2
 from django.shortcuts import render_to_response
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.contenttypes.models import ContentType
 
 def index(request):
     context = RequestContext(request, {'courses': Course.objects.all()}) 
@@ -42,6 +43,24 @@ def admin_save(request, slug):
         lesson.save()
         video = Video(lesson=lesson, url=request.POST['lesson_%s_video_id' % (lesson_order)], provider='youtube')
         video.save()
+        last_question = max([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])
+        for question_order in range(1, last_question + 1):
+            #checkboxes
+            checkbox_question = CheckboxQuestion2()
+            checkbox_answer = CheckboxAnswer()
+            for h, cq in enumerate(sorted([int(i for i in request.POST.keys() if re.match('\w+_%s_question_%s_answer_choice_\d+' % (lesson_order, answer_choice)), i)])):
+                checkbox = Checkbox2(order=h, value=request.POST['cq'])
+                checkbox.save()
+                checkbox_question.checkboxes.add(checkbox)
+                if request.POST[cq.replace('answer_choice', 'answer')] == 'true':
+                    checkbox_answer.checkboxes.add(checkbox)
+            checkbox_question.save()
+            question = QuestionAndAnswer(lesson=lesson, order=question_order, 
+                statement=request.POST['lesson_%s_question_%s' % (lesson_order, question_order)],
+                question_type=ContentType.objects.get(app_label="interactive_courses", model="CheckboxQuestion2"),
+                question_id=)
+            question.statement = request.POST['lesson_%s_question' % (lesson_order)]
+            question.save()
         
     #return HttpResponse(str(request.POST))
     # get the lessons
