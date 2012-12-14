@@ -1,5 +1,6 @@
 function save()
 {
+    alert($('form').children());
 	var content = $("form").serialize();
 	$.post('save/', content,function(response){
         $('#message').text('Saved').show(0).delay(5000).hide(0);        
