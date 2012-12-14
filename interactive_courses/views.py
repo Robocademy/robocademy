@@ -32,7 +32,7 @@ def admin_save(request, slug):
     #request.POST = dict([(x, y[0]) for x, y in request.POST.items()])
     #return HttpResponse(str(request.POST))
     course = Course.objects.get(slug=slug)
-    course.title = request.POST['course_title']
+    #course.title = request.POST['course_title']
     course.save()
     course.delete_lessons()
     return HttpResponse(str(request.POST))
