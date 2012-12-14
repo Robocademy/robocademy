@@ -2,7 +2,7 @@ function save()
 {
     $('form > ol > li').each(function(index) {
         $(this).find('input').each(function(j) {
-            alert(j);
+            alert($(this).val());
         });
     });
 	var content = $("form").serialize();
