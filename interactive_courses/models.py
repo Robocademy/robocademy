@@ -24,7 +24,6 @@ class Course(models.Model):
                     k.delete()
                 for k in j.question_object.correct_checkboxes.all():
                     k.delete()    
-                for 
                 j.delete()
             i.delete()
         
