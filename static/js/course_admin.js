@@ -1,17 +1,12 @@
 function save()
 {
-    var data = [];
-    data.push({
-        key:   "course_title",
-        value: $('#course_title').val()
-    });
+    var data = {};
+    data.course_title = $('#course_title').val();
     
     $('form > ol > li').each(function(index) {
         var order = 1;
-        data.push({
-            key:   "lesson_title",
-            value: $(this).find('.lesson_title').val()
-        });
+        data.lesson_title = $(this).find('.lesson_title').val();
+        
         
     });
     alert(JSON.stringify(data));
