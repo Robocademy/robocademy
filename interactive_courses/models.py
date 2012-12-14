@@ -15,6 +15,19 @@ class Course(models.Model):
     def get_url(self):
         return '/interactive_courses/%s/' % (self.slug)
         
+    def delete_lessons(self):
+        for i in Lesson.objects.filter(course=self):
+            for j in Video.objects.filter(lesson=i):
+                j.delete()
+            for j in QuestionAndAnswer.objects.filter(lesson=i):
+                for k in j.question_object.checkboxes.all():
+                    k.delete()
+                for k in j.question_object.correct_checkboxes.all():
+                    k.delete()    
+                for 
+                j.delete()
+            i.delete()
+        
     def get_lessons(self):
         return Lesson.objects.filter(course=self).order_by('order')
     
