@@ -14,7 +14,8 @@ function save()
             answer_choice_order = 0;
             $(this).find('span').each(function(k) {
                 answer_choice_order += 1;
-                data['lesson_'+lesson_order+'_question_'+question_order+'_answer_choice_'+answer_choice_order] = $(this).find('.answer_choice').val();
+                data['lesson_'+lesson_order+'_question_'+question_order+'_answer_'+answer_choice_order] = $(this).find('.answer').val();
+                data['lesson_'+lesson_order+'_question_'+question_order+'_answer_'+answer_choice_order] = $(this).find('.answer_choice').val();
             });
         });
     });
