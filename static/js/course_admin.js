@@ -32,6 +32,7 @@ $(function() {
         $(this).parent().parent().parent().remove();
     });
     $('.delete_answer_choice').live('click', function() {
+        alert('will do ');
         $(this).parent().remove();
     });    
     
