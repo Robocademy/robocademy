@@ -1,12 +1,12 @@
 function save()
 {
-    var data = {};
-    data.course_title = $('#course_title').val();
-    
+    var data = new Array();
+    data['course_title'] = $('#course_title').val();
+    var order = 0;
     $('form > ol > li').each(function(index) {
-        var order = 1;
-        data.lesson_title = $(this).find('.lesson_title').val();
-        
+        lesson_order += 1;
+        data['lesson_'+lesson_order+'_title'] = $(this).find('.lesson_title').val();
+        data['lesson_'+lesson_order+'_video_id'] = $(this).find('.lesson_video_id').val();
         
     });
     alert(JSON.stringify(data));
