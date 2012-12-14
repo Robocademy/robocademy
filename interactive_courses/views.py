@@ -22,10 +22,12 @@ def get_course_data(request, slug):
     response_data = {'lessons': [i.get_dict() for i in course.get_lessons()]}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
     
+@staff_member_required    
 def course_admin(request, slug):
     context = RequestContext(request, {'course': Course.objects.get(slug=slug)})
     return render_to_response('interactive_courses/course_admin.html', context)
     
+@staff_member_required
 def admin_save(request, slug):
     course = Course.objects.get(slug=slug)
     course.title = request.POST['course_title']
