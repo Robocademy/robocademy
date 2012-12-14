@@ -1,6 +1,6 @@
 function save()
 {
-    var data = new Array();
+    var data = {};
     data['course_title'] = $('#course_title').val();
     var lesson_order = 0;
     $('form > ol > li').each(function(index) {
