@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 import json
-from models import Course, Video, QuestionAndAnswer
+from models import Course, Lesson, Video, QuestionAndAnswer
 from django.shortcuts import render_to_response
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -26,6 +26,7 @@ def get_course_data(request, slug):
 def course_admin(request, slug):
     context = RequestContext(request, {'course': Course.objects.get(slug=slug)})
     return render_to_response('interactive_courses/course_admin.html', context)
+import re
     
 @staff_member_required
 def admin_save(request, slug):
@@ -35,23 +36,27 @@ def admin_save(request, slug):
     #course.title = request.POST['course_title']
     course.save()
     course.delete_lessons()
-    return HttpResponse(str(request.POST))
+    last_lesson = max([i for i in request.POST.keys() if re.match('\w+_(?P<n>\d+)_\w+', i)])
+    for lesson_order in range(1, last_lesson + 1):
+        lesson = Lesson(course=course, order=lesson_order, title=request.POST['lesson_%s_title' % (lesson_order)])
+        lesson.save()
+    #return HttpResponse(str(request.POST))
     # get the lessons
-    for lesson in course.get_lessons():
-        lesson.title = request.POST['lesson_%s_title' % (lesson.order)]
-        video = Video.objects.filter(lesson=lesson)[0]
-        video.url = request.POST['lesson_%s_video_id' % (lesson.order)]
-        video.save()
-        question = QuestionAndAnswer.objects.filter(lesson=lesson)[0]
-        question.statement = request.POST['lesson_%s_question' % (lesson.order)]
-        question.save()
+    #for lesson in course.get_lessons():
+    #    lesson.title = request.POST['lesson_%s_title' % (lesson.order)]
+    #    video = Video.objects.filter(lesson=lesson)[0]
+    #    video.url = request.POST['lesson_%s_video_id' % (lesson.order)]
+    #    video.save()
+    #    question = QuestionAndAnswer.objects.filter(lesson=lesson)[0]
+    #    question.statement = request.POST['lesson_%s_question' % (lesson.order)]
+    #    question.save()
         
         # change answer choices
-        for answer_choice in QuestionAndAnswer.objects.filter(lesson=lesson)[0].question_object.checkboxes.all().order_by('order'):
-            answer_choice.value = request.POST['lesson_%s_answer_choice_%s' % (lesson.order, answer_choice.order)]
-            answer_choice.save()
+    #    for answer_choice in QuestionAndAnswer.objects.filter(lesson=lesson)[0].question_object.checkboxes.all().order_by('order'):
+    #        answer_choice.value = request.POST['lesson_%s_answer_choice_%s' % (lesson.order, answer_choice.order)]
+    #        answer_choice.save()
         
-        lesson.save()
+    #    lesson.save()
          
     
     return HttpResponse(str(request.POST))
