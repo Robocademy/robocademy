@@ -9,7 +9,7 @@ function save()
         data['lesson_'+lesson_order+'_video_id'] = $(this).find('.lesson_video_id').val();
         
     });
-    alert(JSON.stringify(data));
+    alert(data);
 	var content = $("form").serialize();
 	$.post('save/', content,function(response){
         $('#message').text('Saved').show(0).delay(5000).hide(0);        
