@@ -32,7 +32,7 @@ def admin_save(request, slug):
     course = Course.objects.get(slug=slug)
     course.title = request.POST['course_title']
     course.save()
-    
+    return HttpResponse(str(request.POST))
     # get the lessons
     for lesson in course.get_lessons():
         lesson.title = request.POST['lesson_%s_title' % (lesson.order)]
