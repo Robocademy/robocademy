@@ -26,8 +26,8 @@
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
 <input type="button" value="Append question" class="append_question" />
 <input type="button" value="Prepend question" class="prepend_question" /></div>
-<table><tr><th>Question:</th>
-<td><textarea name="lesson_{{ lesson.order }}_question_{{ question.order }}">{{ question.question }}</textarea></td></tr>
+<table class="question_box"><tr><th>Question:</th>
+<td><textarea name="lesson_{{ lesson.order }}_question_{{ question.order }}" class="question">{{ question.question }}</textarea></td></tr>
 <tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
 <tr><th>Answer:</th><td>
 
