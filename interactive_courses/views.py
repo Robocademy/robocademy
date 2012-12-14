@@ -40,6 +40,9 @@ def admin_save(request, slug):
     for lesson_order in range(1, last_lesson + 1):
         lesson = Lesson(course=course, order=lesson_order, title=request.POST['lesson_%s_title' % (lesson_order)])
         lesson.save()
+        video = Video(lesson=lesson, url=request.POST['lesson_%s_video_id' % (lesson_order)], provider='youtube')
+        video.save()
+        
     #return HttpResponse(str(request.POST))
     # get the lessons
     #for lesson in course.get_lessons():
