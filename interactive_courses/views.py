@@ -36,7 +36,7 @@ def admin_save(request, slug):
     #course.title = request.POST['course_title']
     course.save()
     course.delete_lessons()
-    last_lesson = max([re.search('\w+_(?P<n>\d+)_\w+', i).group('n') for i in request.POST.keys() if re.match('\w+_(?P<n>\d+)_\w+', i)])
+    last_lesson = max([int(re.search('\w+_(?P<n>\d+)_\w+', i).group('n')) for i in request.POST.keys() if re.match('\w+_(?P<n>\d+)_\w+', i)])
     for lesson_order in range(1, last_lesson + 1):
         lesson = Lesson(course=course, order=lesson_order, title=request.POST['lesson_%s_title' % (lesson_order)])
         lesson.save()
