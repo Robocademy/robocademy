@@ -22,7 +22,7 @@ class Course(models.Model):
             for j in QuestionAndAnswer.objects.filter(lesson=i):
                 for k in j.question_object.checkboxes.all():
                     k.delete()
-                for k in j.question_object.correct_checkboxes.all():
+                for k in j.answer_object.correct_checkboxes.all():
                     k.delete()    
                 j.delete()
             i.delete()
