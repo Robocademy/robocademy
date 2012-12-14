@@ -29,7 +29,7 @@ def course_admin(request, slug):
     
 @staff_member_required
 def admin_save(request, slug):
-    request.POST = dict([(x, y[0]) for x, y in request.POST.items()])
+    #request.POST = dict([(x, y[0]) for x, y in request.POST.items()])
     return HttpResponse(str(request.POST))
     course = Course.objects.get(slug=slug)
     course.title = request.POST['course_title']
