@@ -3,7 +3,7 @@ function save()
     $('form > ol > li').each(function(index) {
         $(this).find('input').each(function(j) {
             alert(j);
-        }
+        });
     });
 	var content = $("form").serialize();
 	$.post('save/', content,function(response){
