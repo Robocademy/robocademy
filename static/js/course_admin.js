@@ -8,7 +8,7 @@ function save()
         data['lesson_'+lesson_order+'_title'] = $(this).find('.lesson_title').val();
         data['lesson_'+lesson_order+'_video_id'] = $(this).find('.lesson_video_id').val();
         var question_order = 0;
-        $(this).find('question_box').each(function(j) {
+        $(this).find('.question_box').each(function(j) {
             question_order += 1;
             data['lesson_'+lesson_order+'_question_'+question_order] = $(this).find('.question').val();
         });
