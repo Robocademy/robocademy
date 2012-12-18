@@ -23,7 +23,7 @@ function save()
             });
         });
     });
-    alert(data);
+    //alert(data);
 	//var content = $("form").serialize();
 	$.post('save/', data ,function(response){
         $('#message').text('Saved').show(0).delay(5000).hide(0);        
