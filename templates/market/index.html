@@ -9,6 +9,11 @@
 </div>
 <div id="middle_left_sidebar" class="column">
 <h3>Companies</h3>
+<ul>
+{% for company in companies %}
+<li>{{ company }}</li>
+{% endfor %}
+</ul>
 </div>
 <div id="middle_right_sidebar" class="column">
 <h3>Inviduals</h3>
