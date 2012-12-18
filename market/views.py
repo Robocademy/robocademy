@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 import json
-from models import Category, Entity, Idea
+from models import Category, Entity, Idea, CategoryOrder
 from django.shortcuts import render_to_response
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
