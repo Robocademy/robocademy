@@ -1,6 +1,6 @@
 from django.contrib import admin
-from models import Idea, Enity
+from robocademy.market.models import Category, Idea, Enity
 
-#admin.register(Category)
+admin.register(Category)
 admin.register(Idea)
 admin.register(Entity)
