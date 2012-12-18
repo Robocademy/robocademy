@@ -299,7 +299,7 @@ width:192px;
 margin-right:10px;
 }
 
-.category {
+a.category:link, a.category:visited {
 background:#000;
 margin-bottom:10px;
 color:#FFF;

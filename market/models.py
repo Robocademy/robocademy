@@ -18,3 +18,10 @@ class Entity(models.Model):
     
     def __unicode__(self):
         return self.name
+        
+class CategoryOrder(models.Model):
+    category = models.ForeignKey(Category)
+    order = models.PositiveIntegerField()
+    
+    def __unicode__(self):
+        return self.category.name    
