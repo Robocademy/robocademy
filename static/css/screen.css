@@ -289,3 +289,18 @@ background:#dcdcdc;
 font-weight:bold;
 text-align:left;
 }
+
+.column {
+float:left;
+width:192px;
+}
+
+#left_sidebar, #middle_left_sidebar, #middle_right_sidebar {
+margin-right:10px;
+}
+
+.category {
+background:#000;
+margin-bottom:10px;
+color:#FFF;
+}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Marketplace for companies</h2>
-<div id="left_sidebar">
+<div id="left_sidebar" class="column">
 <h3>Pick what you need</h3>
 {% for category in categories %}
 <div class="category">
@@ -9,10 +9,13 @@
 </div>
 {% endfor %}
 </div>
-<div id="middle_sidebar">
-
+<div id="middle_left_sidebar" class="column">
+<h3>Companies</h3>
 </div>
-<div id="right_sidebar">
+<div id="middle_right_sidebar" class="column">
+<h3>Inviduals</h3>
+</div>
+<div id="right_sidebar" class="column">
 <h3>Get involved in an idea</h3>
 </div>
 {% endblock %}
