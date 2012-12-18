@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'devices',
     'lessons',
     'interactive_courses',
+    'market',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
