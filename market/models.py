@@ -7,5 +7,5 @@ class Idea(models.Model):
     summary = models.CharField(max_length=50)
     description = models.TextField()
 
-class Enity(models.Model):
+class Entity(models.Model):
     name = models.CharField(max_length=50)
