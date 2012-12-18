@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     (r'^interactive_courses/', include('interactive_courses.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'market/', include('market.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
