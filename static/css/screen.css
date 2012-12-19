@@ -5,6 +5,24 @@ background:url('../images/background.png') repeat-x;
 font:.8em Arial, sans-serif;
 }
 
+#mission {
+width:200px;
+float:left;
+margin-right:10px;
+}
+
+#strategy {
+width:590px;
+
+}
+
+#mission h3, #strategy h3 {
+background:#000;
+color:#FFF;
+font-size:1.25em;
+padding:10px;
+}
+
 p.big {
 font-size:1.4em;
 }
