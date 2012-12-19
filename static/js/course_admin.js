@@ -42,7 +42,7 @@ $(function() {
     });
     $('.add_answer_choice').live('click', function() {
         var order = $(this).attr('order');
-        $(this).parent().find('.answer_choices').append('<span><input name="lesson_'+order+'_answer_{{ x.id }}" type="checkbox" /> <input type="text" name="lesson_'+order+'_answer_choice_" value="" class="answer_choice" /> <input class="delete_answer_choice" type="button" value="X" /><br/></span>')
+        $(this).parent().find('.answer_choices').append('<span><input name="lesson_'+order+'_answer_{{ x.id }}" type="checkbox" class="answer" /> <input type="text" name="lesson_'+order+'_answer_choice_" value="" class="answer_choice" /> <input class="delete_answer_choice" type="button" value="X" /><br/></span>')
     });
     $('.delete_lesson').live('click', function() {
         $(this).parent().parent().remove();
