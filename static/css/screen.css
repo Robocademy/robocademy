@@ -11,6 +11,12 @@ float:left;
 margin-right:10px;
 }
 
+#overview, #people {
+width:290px;
+}
+
+
+
 #strategy {
 width:590px;
 margin-left:210px;
