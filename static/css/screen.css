@@ -27,6 +27,10 @@ float:right;
 font-size:1.1em;
 }
 
+.infoblock ol {
+list-style-type:decimal;
+}
+
 #strategy {
 width:590px;
 margin:0 0 10px 210px;
