@@ -43,8 +43,10 @@ def admin_save(request, slug):
         lesson.save()
         video = Video(lesson=lesson, url=request.POST['lesson_%s_video_id' % (lesson_order)], provider='youtube')
         video.save()
-        last_question = max([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])
-        for question_order in range(1, last_question):
+        #last_question = max([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])
+        #for question_order in range(1, last_question):
+        for question_order in list(set([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)]))
+
             #checkboxes
             checkbox_question = CheckboxQuestion2()
             checkbox_question.save()
