@@ -54,7 +54,7 @@ def admin_save(request, slug):
                 checkbox.save()
                 checkbox_question.checkboxes.add(checkbox)
                 if request.POST[cq.replace('answer_choice', 'answer')] == 'true':
-                    checkbox_answer.checkboxes.add(checkbox)
+                    checkbox_answer.correct_checkboxes.add(checkbox)
             checkbox_question.save()
             checkbox_answer.save()
             question = QuestionAndAnswer(lesson=lesson, order=question_order, 
