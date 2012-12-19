@@ -20,7 +20,13 @@ float:left;
 margin-right:10px;
 }
 
+.infoblock2 {
 
+}
+
+.infoblock2 strong {
+color:red;
+}
 
 #strategy {
 width:590px;
