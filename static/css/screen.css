@@ -33,8 +33,17 @@ margin-left:210px;
 }
 
 .infoblock h3, .infoblock h4 {
-background:#000;
+
 color:#FFF;
+}
+
+
+.infoblock h3 {
+background:#000;
+}
+
+.infoblock h4 {
+background:#696969;
 }
 
 .infoblock2 h4{
