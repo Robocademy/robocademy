@@ -47,6 +47,7 @@ def admin_save(request, slug):
         for question_order in range(1, last_question + 1):
             #checkboxes
             checkbox_question = CheckboxQuestion2()
+            checkbox_question.save()
             checkbox_answer = CheckboxAnswer2()
             for h, cq in enumerate(sorted([i for i in request.POST.keys() if re.match('\w+_%s_question_%s_answer_choice_\d+' % (lesson_order, question_order), i)])):
                 checkbox = Checkbox2(order=h, value=request.POST[cq])
