@@ -12,7 +12,7 @@
 <textarea style="width:100%"><iframe src="http://robocademy.com{{ course.get_url }}"></iframe></textarea>
 <form>
 <input type="button" id="save" value="Save (CTRL-S)" style="float:right" />Course title: <input id="course_title" type="text" name="course_title" value="{{ course.title }}" />
-<ol>
+<ol>{% if course.get_lessons %}
 {% for lesson in course.get_lessons %}
 <li id="lesson_{{ lesson.order }}"><div style="float:right">
 <input type="button" lesson="{{ lesson.id }}" value="Delete lesson" class="delete_lesson">
@@ -22,7 +22,7 @@
 <input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="lesson_title long" />
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" class="lesson_video_id" /></td></tr>
-{% if lesson.get_questions %}
+
 {% for question in lesson.get_questions %}
 <tr><th></th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
@@ -49,7 +49,22 @@
 
 </table>
 {% endfor %}
+</td></tr>
+</table>
+</li>
 {% else %}
+
+
+
+<li id="lesson_{{ lesson.order }}"><div style="float:right">
+<input type="button" lesson="{{ lesson.id }}" value="Delete lesson" class="delete_lesson">
+<input type="button" value="Append new lesson" class="append_new_lesson">
+<input type="button" value="Prepend new lesson" class="prepend_new_lesson">
+</div>
+<input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="lesson_title long" />
+<table>
+<tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" class="lesson_video_id" /></td></tr>
+
 <tr><th></th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
 <input type="button" value="Append question" class="append_question" />
@@ -60,26 +75,18 @@
 <tr><th>Answer:</th><td>
 
 <div class="answer_choices">
-{% for x in question.answer_choices %}
-<span>
-<input class="answer" name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in question.answer_ids %} checked{% endif %}/> 
-<input type="text" name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}"  class="answer_choice" />
-<input type="button" value="X" class="delete_answer_choice" /><br/>
-</span>
 
-{% endfor %}
 
 </div>
 <input type="button" value="Add answer choice" class="add_answer_choice" lessonorder="{{ lesson.order }}" qaorder="{{ question.order }}" />
 </td></tr>
 
 </table>
-{% endif %}
 </td></tr>
 </table>
 </li>
-{% endfor %}
-</ul>
+{% endif %}
+</ol>
 </form>
 </body>
 </html>
