@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <table>
-<tr><th>Course</th><th>Instructor</th><th>Price</th></tr>
+<tr><th>Course</th><th>Instructor</th><th>Price</th>{% if user.is_staff %}<th>Admin</th>{% endif %}</tr>
 {% for course in courses %}
-<tr><td><a href="{{ course.get_url }}">{{ course.title }}</a></td><td>{{ course.authors.all }}</td><td>{% if course.price == 0.00 %}Free{% else %}{{ course.price }}{% endif %}</td></tr>
+<tr><td><a href="{{ course.get_url }}">{{ course.title }}</a></td>
+<td>{{ course.authors.all }}</td>
+<td>{% if course.price == 0.00 %}Free{% else %}{{ course.price }}{% endif %}</td>
+{% if user.is_staff %}
+<td><a href="{{ course.get_url }}admin">Admin</a></td>
+{% endif %}
+</tr>
 {% endfor %}
 </table>
 {% endblock %}
