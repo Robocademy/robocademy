@@ -22,8 +22,9 @@ color:#FFF;
 font-size:1.25em;
 }
 
-.infoblock p, .infoblock h3 {
+.infoblock p, .infoblock h3, .infoblock h4, .infoblock ol {
 padding:10px;
+margin:0;
 }
 
 p.big {
