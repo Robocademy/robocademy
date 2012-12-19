@@ -22,7 +22,7 @@
 <input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="lesson_title long" />
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" class="lesson_video_id" /></td></tr>
-
+{% if lesson.get_questions %}
 {% for question in lesson.get_questions %}
 <tr><th></th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
@@ -49,6 +49,30 @@
 
 </table>
 {% endfor %}
+{% else %}
+<tr><th></th><td>
+<div style="float:right"><input type="button" value="Delete question" class="delete_question" />
+<input type="button" value="Append question" class="append_question" />
+<input type="button" value="Prepend question" class="prepend_question" /></div>
+<table class="question_box"><tr><th>Question:</th>
+<td><textarea name="lesson_{{ lesson.order }}_question_{{ question.order }}" class="question">{{ question.question }}</textarea></td></tr>
+<tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
+<tr><th>Answer:</th><td>
+
+<div class="answer_choices">
+<span>
+<input class="answer" name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_{{ x.order }}" type="checkbox"{% if x.id in question.answer_ids %} checked{% endif %}/> 
+<input type="text" name="lesson_{{ lesson.order }}_question_{{ question.order }}_answer_choice_{{ x.order }}" value="{{ x.value }}"  class="answer_choice" />
+<input type="button" value="X" class="delete_answer_choice" /><br/>
+</span>
+
+
+</div>
+<input type="button" value="Add answer choice" class="add_answer_choice" lessonorder="{{ lesson.order }}" qaorder="{{ question.order }}" />
+</td></tr>
+
+</table>
+{% endif %}
 </td></tr>
 </table>
 </li>
