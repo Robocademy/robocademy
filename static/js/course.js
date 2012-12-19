@@ -58,7 +58,7 @@ function getData()
         for (var i = 0; i < lessons.length; i++)
         {
             var lesson = lessons[i];
-            $("body").append("<div id='video_"+lesson.order+"' class='video' style='z-layer:"+lesson.order+"'></div>");
+            $("body").append("<div id='video_"+lesson.order+"' class='video' style='z-layer:"1"'></div>");
             
             $("#video_"+lesson.order).tubeplayer({
                 width: width, // the width of the player
@@ -166,6 +166,9 @@ function getData()
 $(function() {
     width = $(window).width();
     height = $(window).height();
+    $('.video').css('width', width);
+    $('.video').css('height', height);
+    
     getData()
     
     
