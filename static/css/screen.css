@@ -21,11 +21,7 @@ width:290px;
 float:right;
 }
 
-.infoblock2 h4{
-margin-top:10px;
-background:#000;
-color:#FFF;
-}
+
 
 .infoblock2 strong {
 font-size:1.1em;
@@ -39,7 +35,10 @@ margin-left:210px;
 .infoblock h3, .infoblock h4 {
 background:#000;
 color:#FFF;
-font-size:1.25em;
+}
+
+.infoblock2 h4{
+margin-top:10px;
 }
 
 .infoblock p, .infoblock h3, .infoblock h4, .infoblock ol {
