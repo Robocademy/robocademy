@@ -66,7 +66,7 @@ def admin_save(request, slug):
                 question_id=checkbox_question.id,
                 answer_type=ContentType.objects.get(app_label="interactive_courses", model="CheckboxAnswer2"),
                 answer_id=checkbox_answer.id)
-            question.statement = request.POST['lesson_%s_question_%s' % (lesson_order, question_order)]
+            #question.statement = request.POST['lesson_%s_question_%s' % (lesson_order, question_order)]
             question.save()
         
     #return HttpResponse(str(request.POST))
