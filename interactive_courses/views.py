@@ -29,7 +29,7 @@ from django.template.defaultfilters import slugify
 def create_course(request):
     course = Course(title=request.POST['title_of_new_course'], slug=slugify(request.POST['title_of_new_course']))
     course.save()    
-    course.add(request.user)
+    course.authors.add(request.user)
     course.save()
     response_data = {'url': course.get_url()} 
     
