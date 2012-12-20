@@ -27,6 +27,9 @@ from django.template.defaultfilters import slugify
 
 @staff_member_required
 def create_course(request):
+    response_data = {'url': ''} 
+    
+    return HttpResponse(json.dumps(response_data), mimetype="application/json") 
     slug = slugify(request.POST['title_of_new_course'])
     course = Course(title=request.POST['title_of_new_course'], slug=slug)
     course.save()    
