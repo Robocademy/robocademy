@@ -15,6 +15,7 @@ function askToContinue()
 
 function nextLesson()
 {
+    window.location.hash = lesson_order;
     if (lesson_order == lessons.length) {
         $('#video_'+lesson_order).html('Congrats! You finished the course.');
     } else {
@@ -174,11 +175,12 @@ $(function() {
     $('.video').css('height', height);
     
     getData()
-     $('a.back').click(function(){
-        lesson_order -= 1;
+    $(window).on('hashchange',function() {
+        var hash = location.hash.substring(1); // strip the leading # symbol
+        // now run code based on whatever the value of 'hash' is
+        lesson_order = parseInt(hash)
         nextLesson();
-        return false;
-    });   
+    });
     
 
 });
