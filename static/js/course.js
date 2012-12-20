@@ -170,7 +170,7 @@ function getData()
 
 $(function() {
     width = $(window).width();
-    height = $(window).outerHeight()();
+    height = $(window).outerHeight();
     console.log('width '+ width);
     console.log('height '+ height);
     $('.video').css('width', width);
