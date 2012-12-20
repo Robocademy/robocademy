@@ -41,7 +41,7 @@ def create_course(request):
 @staff_member_required    
 def course_admin(request, slug):
     users_courses = [i.course for i in CourseAuthorRelationship.objects.filter(author=request.user)]
-    context = RequestContext(request, {'course': Course.objects.get(slug=slug), users_courses=users_courses})
+    context = RequestContext(request, {'course': Course.objects.get(slug=slug), 'users_courses': users_courses})
     return render_to_response('interactive_courses/course_admin.html', context)
 import re
     
