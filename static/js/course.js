@@ -7,7 +7,7 @@ var answer_ids = {}
 var left_to_go = 0;
 var wrong = false;
 var responsive_quizzing = true;
-
+var replay_video_automatically = false;
 function askToContinue()
 {
     $('#video_'+lesson_order).html('<div style="text-align:center"><p>Good job! Do you want to continue?</p><input type="button" class="continue" value="Continue" /></div>');
@@ -93,20 +93,24 @@ function getData()
             
             if (responsive_quizzing) {
                 $(this).parent().addClass('wrong_checkbox');
-                $('.small_video').tubeplayer({
-                    autoPlay: true,
-                    width: 150, // the width of the player
-                    height: 113, // the height of the player
-                    allowFullScreen: "true", // true by default, allow user to go full screen
-                    initialVideo: lesson.video_id, // the video that is loaded into the player
-                    preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
-                    onPlayerEnded: function(){},
-                    onPlay: function(id){}, // after the play method is called
-                    onPause: function(){}, // after the pause method is called
-                    onSeek: function(time){}, // after the video has been seeked to a defined point
-                    onMute: function(){}, // after the player is muted
-                    onUnMute: function(){} // after the player is unmuted
-                });  
+                if (replay_video_automatically) {
+                    $('.small_video').tubeplayer({
+                        autoPlay: true,
+                        width: 150, // the width of the player
+                        height: 113, // the height of the player
+                        allowFullScreen: "true", // true by default, allow user to go full screen
+                        initialVideo: lesson.video_id, // the video that is loaded into the player
+                        preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
+                        onPlayerEnded: function(){},
+                        onPlay: function(id){}, // after the play method is called
+                        onPause: function(){}, // after the pause method is called
+                        onSeek: function(time){}, // after the video has been seeked to a defined point
+                        onMute: function(){}, // after the player is muted
+                        onUnMute: function(){} // after the player is unmuted
+                    });  
+                } else {
+                    $('.small_video').html('<input type="button" class="rewatch" value="Rewatch video" />');
+                }
                 $(this).parent().prepend('<strong>Wrong:</strong>');
                 $(this).remove(); 
             } else {
