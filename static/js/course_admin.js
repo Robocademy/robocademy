@@ -66,4 +66,10 @@ $(function() {
     $('.prepend_question').live('click', function() {
         $(this).parent().parent().parent().before($(this).parent().parent().parent().html());
     });
+    $('#create_course').click(function() {
+        $.post('/interactive_courses/create_course/', {title_of_new_course: $('#title_of_new_course').val()},function(response){
+            window.location.href=response.url;   
+        });   
+        
+    });
 });

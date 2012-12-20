@@ -22,6 +22,14 @@ def get_course_data(request, slug):
     course = Course.objects.get(slug=slug)
     response_data = {'lessons': [i.get_dict() for i in course.get_lessons()]}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
+
+from django.template.defaultfilters import slugify
+
+@staff_member_required
+def create_course(request):
+    course = Course(title=request.POST['title_of_new_course'], slug=slugify(request.POST['title_of_new_course'])) 
+    response_data = {'url': course.get_url()}    
+    return HttpResponse(json.dumps(response_data), mimetype="application/json")
     
 @staff_member_required    
 def course_admin(request, slug):

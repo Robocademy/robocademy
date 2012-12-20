@@ -9,4 +9,5 @@ urlpatterns = patterns('interactive_courses.views',
     url(r'^(?P<slug>[\w_]+)/admin/$', 'course_admin'),
     url(r'^(?P<slug>[\w_]+)/admin/save/$', 'admin_save'),
     url(r'^(?P<slug>[\w_]+)/embed/$', 'course_embed'),
+    url(r'^create_course/$', 'create_course'),
 )
