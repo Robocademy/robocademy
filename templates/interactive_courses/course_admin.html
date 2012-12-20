@@ -10,8 +10,9 @@
 </head>
 <body>
 <div class="textalignright"><input type="text" id="title_of_new_course"/><input type="button" value="Create course" id="create_course" />
-<select>
+<select id="switch_course">
 {% for course in users_courses %}
+<option>Switch course</option>
 <option value="{{ course.get_admin_url }}">{{ course.title }}</option>
 {% endfor %}
 </select>

@@ -72,4 +72,8 @@ $(function() {
         });   
         
     });
+    $('#switch_course').live('change', function() 
+    {
+        window.location.href=$(this).find(':selected').val();
+    });
 });
