@@ -4,6 +4,10 @@ ul, li {
 list-style:none;
 }
 
+.textalignright {
+text-align:right;
+}
+
 body {
 font:.8em Arial, sans-serif;
 margin:0;
