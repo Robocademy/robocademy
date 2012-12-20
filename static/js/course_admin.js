@@ -76,4 +76,5 @@ $(function() {
     {
         window.location.href=$(this).find(':selected').val();
     });
+
 });

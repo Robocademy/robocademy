@@ -174,7 +174,11 @@ $(function() {
     $('.video').css('height', height);
     
     getData()
-    
+     $('a.back').click(function(){
+        lesson_order -= 1;
+        nextLesson();
+        return false;
+    });   
     
 
 });
