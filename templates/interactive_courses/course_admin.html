@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/css/course_admin.css" />
 </head>
 <body>
+<iframe src="http://robocademy.com{{ course.get_url }}" width="560" height="315"></iframe>
 <div class="textalignright"><input type="text" id="title_of_new_course"/><input type="button" value="Create course" id="create_course" />
 <select id="switch_course"><option>Switch course</option>
 {% for course in users_courses %}
