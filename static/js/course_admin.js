@@ -29,6 +29,7 @@ function save()
         $('#message').text('Saved').show(0).delay(5000).hide(0);        
 	});    
     console.log($('body').html());
+    document.location.reload()
 }
 
 $(function() {
