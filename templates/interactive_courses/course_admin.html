@@ -9,7 +9,13 @@
 <link rel="stylesheet" type="text/css" href="/css/course_admin.css" />
 </head>
 <body>
-<div class="textalignright"><input type="text" id="title_of_new_course"/><input type="button" value="Create course" id="create_course" /></div>
+<div class="textalignright"><input type="text" id="title_of_new_course"/><input type="button" value="Create course" id="create_course" />
+<select>
+{% for course in users_courses %}
+<option value="{{ course.get_admin_url }}">{{ course.title }}</option>
+{% endfor %}
+</select>
+</div>
 <textarea style="width:100%"><iframe src="http://robocademy.com{{ course.get_url }}" width="560" height="315"></iframe></textarea>
 <form>
 <input type="button" id="save" value="Save (CTRL-S)" style="float:right" />Course title: <input id="course_title" type="text" name="course_title" value="{{ course.title }}" />
