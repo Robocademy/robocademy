@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 import json
-from models import Course, Lesson, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2
+from models import Course, CourseAuthorRelationship, Lesson, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2
 from django.shortcuts import render_to_response
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
@@ -27,9 +27,12 @@ from django.template.defaultfilters import slugify
 
 @staff_member_required
 def create_course(request):
-    course = Course(title=request.POST['title_of_new_course'], slug=slugify(request.POST['title_of_new_course']))
+    slug = slugify(request.POST['title_of_new_course'])
+    course = Course(title=request.POST['title_of_new_course'], slug=slug)
     course.save()    
-    course.authors.add(request.user)
+    course_author = CourseAuthorRelationship(course=course, author=request.user, order=1)
+    course_author.save()
+    course.authors.add(course_author)
     course.save()
     response_data = {'url': course.get_url()} 
     
