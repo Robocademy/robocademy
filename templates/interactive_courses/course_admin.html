@@ -9,6 +9,38 @@
 <link rel="stylesheet" type="text/css" href="/css/course_admin.css" />
 </head>
 <body>
+<div id="new_lesson" class="hide">
+<div style="float:right">
+<input type="button" lesson="" value="Delete lesson" class="delete_lesson">
+<input type="button" value="Append new lesson" class="append_new_lesson">
+<input type="button" value="Prepend new lesson" class="prepend_new_lesson">
+</div>
+<!--<input type="text" name="lesson__title" value="" class="lesson_title long" />-->
+<table>
+<tr><th>Video id:</th><td><input type="text" name="lesson__video_id" value="" class="lesson_video_id" /></td></tr>
+
+<tr><th></th><td>
+<div style="float:right"><input type="button" value="Delete question" class="delete_question" />
+<input type="button" value="Append question" class="append_question" />
+<input type="button" value="Prepend question" class="prepend_question" /></div>
+<table class="question_box"><tr><th>Question:</th>
+<td><textarea name="lesson__question_" class="question"></textarea></td></tr>
+<tr><td colspan="2">Type out the possible choices and select the ones required to get the question correct</td></tr>
+<tr><th>Answer:</th><td>
+
+<div class="answer_choices">
+
+
+</div>
+<input type="button" value="Add answer choice" class="add_answer_choice" lessonorder="" qaorder="" />
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+
+</div>
+
 <div id="reload_course"><iframe src="http://robocademy.com{{ course.get_url }}" width="560" height="315"></iframe></div>
 <div class="textalignright"><input type="text" id="title_of_new_course"/><input type="button" value="Create course" id="create_course" />
 <select id="switch_course"><option>Switch course</option>

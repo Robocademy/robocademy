@@ -49,10 +49,10 @@ $(function() {
         $(this).parent().parent().remove();
     });
     $('.append_new_lesson').live('click', function() {
-        $(this).parent().parent().after('<li>'+$(this).parent().parent().html()+'</li>');
+        $(this).parent().parent().after('<li>'+$('#new_lesson').html()+'</li>');
     });
     $('.prepend_new_lesson').live('click', function() {
-        $(this).parent().parent().before('<li>'+$(this).parent().parent().html()+'</li>');
+        $(this).parent().parent().before('<li>'+$('#new_lesson').html()+'</li>');
     });
     $('.delete_question').live('click', function() {
         $(this).parent().parent().parent().remove();
