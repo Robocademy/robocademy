@@ -18,11 +18,13 @@ def download(i, device_path, connection_id):
     
     localFile = open('/home/tim/tmprcc/src/sketch.ino', 'w')
     url = 'http://%s/devices/get_code/%s/' % (domain, connection_id)
+    
     # I'm having trouble getting the current version of get_code, cache problems, tried a bunch of things like urllib.urlclean, so now trying
     # wget --cache=off
     os.system('wget --no-cache --user-agent="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" --cookies=on --load-cookies=cookies.txt %s' % url)
     f = open('index.html', 'r')
     code = f.read()
+    print code
     f.close()
     os.system('rm index.html*')
     #request = urllib2.Request(url)

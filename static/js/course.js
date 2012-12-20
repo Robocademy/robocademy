@@ -6,7 +6,7 @@ var lessons = {}
 var answer_ids = {}
 var left_to_go = 0;
 var wrong = false;
-var responsive_quizzing = false;
+var responsive_quizzing = true;
 
 function askToContinue()
 {
