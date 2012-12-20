@@ -27,8 +27,12 @@ from django.template.defaultfilters import slugify
 
 @staff_member_required
 def create_course(request):
-    course = Course(title=request.POST['title_of_new_course'], slug=slugify(request.POST['title_of_new_course'])) 
-    response_data = {'url': course.get_url()}    
+    course = Course(title=request.POST['title_of_new_course'], slug=slugify(request.POST['title_of_new_course']))
+    course.save()    
+    course.add(request.user)
+    course.save()
+    response_data = {'url': course.get_url()} 
+    
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
     
 @staff_member_required    
