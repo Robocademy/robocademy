@@ -32,7 +32,7 @@ def create_course(request):
     course.save()    
     course_author = CourseAuthorRelationship(course=course, author=request.user, order=1)
     course_author.save()
-    course.authors.add(course_author)
+    #course.authors.add(course_author)
     course.save()
     response_data = {'url': course.get_url()} 
     
