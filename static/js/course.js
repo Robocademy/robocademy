@@ -171,6 +171,8 @@ function getData()
 $(function() {
     width = $(window).width();
     height = $(window).height();
+    console.log('width '+ width);
+    console.log('height '+ height);
     $('.video').css('width', width);
     $('.video').css('height', height);
     
