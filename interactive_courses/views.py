@@ -34,7 +34,7 @@ def create_course(request):
     course_author.save()
     #course.authors.add(course_author)
     course.save()
-    response_data = {'url': course.get_url()} 
+    response_data = {'url': course.get_admin_url()} 
     
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
     

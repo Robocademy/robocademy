@@ -14,7 +14,10 @@ class Course(models.Model):
         
     def get_url(self):
         return '/interactive_courses/%s/' % (self.slug)
-        
+         
+    def get_admin_url(self):
+        return '/interactive_courses/%s/admin/' % (self.slug)       
+
     def delete_lessons(self):
         for i in Lesson.objects.filter(course=self):
             for j in Video.objects.filter(lesson=i):
