@@ -18,7 +18,12 @@
 <!--<input type="text" name="lesson__title" value="" class="lesson_title long" />-->
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson__video_id" value="" class="lesson_video_id" /></td></tr>
-
+<tr><th>Content type:</th><td><select class="content_type">
+<option value="youtube_id">Youtube id</option>
+<option value="text">Text</option>
+<option value="image">Image</option>
+</select></td></tr>
+<tr><th>Content:</th><td><textarea value="" class="lesson_content"></textarea></td></tr>
 <tr><th></th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
 <input type="button" value="Append question" class="append_question" />

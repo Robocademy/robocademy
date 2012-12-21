@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 import json
-from models import Course, CourseAuthorRelationship, Lesson, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2
+from models import Course, CourseAuthorRelationship, Lesson, LessonContent, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2
 from django.shortcuts import render_to_response
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
@@ -57,8 +57,16 @@ def admin_save(request, slug):
     for lesson_order in range(1, last_lesson + 1):
         lesson = Lesson(course=course, order=lesson_order, title='')
         lesson.save()
-        video = Video(lesson=lesson, url=request.POST['lesson_%s_video_id' % (lesson_order)], provider='youtube')
-        video.save()
+        try:
+            lesson_content = LessonContent(lesson=lesson, content_type=request.POST['lesson_%s_content_type' % (lesson_order)], content=request.POST['lesson_%s_content' % (lesson_order)])
+            lesson_content.save()
+        except:
+            pass
+        try:
+            video = Video(lesson=lesson, url=request.POST['lesson_%s_video_id' % (lesson_order)], provider='youtube')
+            video.save()
+        except:
+            pass
         #last_question = max([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])
         #for question_order in range(1, last_question):
         #for question_order in list(set([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])):

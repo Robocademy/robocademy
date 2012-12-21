@@ -20,6 +20,12 @@ class Course(models.Model):
 
     def delete_lessons(self):
         for i in Lesson.objects.filter(course=self):
+            try:
+                lesson_content = LessonContent.objects.get(lesson=self)
+                lesson_content.delete()
+            except:
+                pass            
+                
             for j in Video.objects.filter(lesson=i):
                 j.delete()
             for j in QuestionAndAnswer.objects.filter(lesson=i):
@@ -77,8 +83,15 @@ class Lesson(models.Model):
             d[key(attr)] = value
         for field in instance._meta.many_to_many:
             d[key(field.name)] = [obj._get_pk_val() for obj in getattr(instance, field.attname).all()]
-        d.update({'video_id': Video.objects.filter(lesson=self)[0].url})
-       
+        try:
+            d.update({'video_id': Video.objects.filter(lesson=self)[0].url})
+        except:
+            pass
+        try:
+            lesson_content = LessonContent.objects.filter(lesson=self)[0]
+            d.update({'content_type': lesson.content_type, 'content': lesson.content})
+        except:
+           pass
         d.update({'question': QuestionAndAnswer.objects.filter(lesson=self)[0].statement})
         try:
             d.update({'answer_choices': QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_choices()})
@@ -89,6 +102,9 @@ class Lesson(models.Model):
         
     def get_video_id(self):
         return Video.objects.filter(lesson=self)[0].url
+        
+    def get_content(self):
+        return LessonContent.objects.filter(lesson=self)[0]    
         
     def get_question(self):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].statement
@@ -101,6 +117,14 @@ class Lesson(models.Model):
 
     def get_answer_ids(self):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()          
+        
+class LessonContent(models.Model):
+    lesson = models.ForeignKey(Lesson)
+    type = models.CharField(max_length=50)
+    content = models.TextField()    
+        
+    def __unicode__(self):
+        return '%s: %s. %s %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title, self.type)     
         
 class Video(models.Model):
     lesson = models.ForeignKey(Lesson)
