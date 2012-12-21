@@ -82,7 +82,7 @@ function getData()
                     $("#video_"+lesson.order).append('<input type="button" value="Next" class="set_question" />');
                     break;       
                 case "image":
-                    $("#video_"+lesson.order).html('<input type="button" value="Next" class="set_question" />').css('background', 'url('+lesson.content+') no-repeat');    
+                    $("#video_"+lesson.order).html('<input type="button" value="Next" class="set_question" />').css('background', 'url('+lesson.content+') no-repeat').css('height': height);    
                     break;                    
             }
 
