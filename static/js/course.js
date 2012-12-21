@@ -60,20 +60,32 @@ function getData()
         {
             var lesson = lessons[i];
             $("body").append("<div id='video_"+lesson.order+"' class='video'></div>");
-            
-            $("#video_"+lesson.order).tubeplayer({
-                width: width, // the width of the player
-                height: height, // the height of the player
-                allowFullScreen: "true", // true by default, allow user to go full screen
-                initialVideo: lesson.video_id, // the video that is loaded into the player
-                preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
-                onPlayerEnded: function(){setQuestion();},
-                onPlay: function(id){}, // after the play method is called
-                onPause: function(){}, // after the pause method is called
-                onSeek: function(time){}, // after the video has been seeked to a defined point
-                onMute: function(){}, // after the player is muted
-                onUnMute: function(){} // after the player is unmuted
-            });
+            switch (lesson.content_type)
+            {
+                case "youtube_id":
+                    $("#video_"+lesson.order).tubeplayer({
+                        width: width, // the width of the player
+                        height: height, // the height of the player
+                        allowFullScreen: "true", // true by default, allow user to go full screen
+                        initialVideo: lesson.video_id, // the video that is loaded into the player
+                        preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
+                        onPlayerEnded: function(){setQuestion();},
+                        onPlay: function(id){}, // after the play method is called
+                        onPause: function(){}, // after the pause method is called
+                        onSeek: function(time){}, // after the video has been seeked to a defined point
+                        onMute: function(){}, // after the player is muted
+                        onUnMute: function(){} // after the player is unmuted
+                    });
+                    break;
+                case "text":
+                    $("#video_"+lesson.order).text(lesson.content).css('text-align', 'center');
+                    $("#video_"+lesson.order).append('<input type="button" value="Next" class="set_question" />');
+                    break;       
+                case "image":
+                    $("#video_"+lesson.order).html('<input type="button" value="Next" class="set_question" />').css('background', 'url('+lesson.content+') no-repeat');    
+                    break;                    
+            }
+
             if (lesson.order != 1)
             {
                 $("#video_"+lesson.order).hide();
@@ -183,6 +195,8 @@ $(function() {
         lesson_order = parseInt(hash)
         nextLesson();
     });
-    
+    $('.set_question').live('click', function() {
+        setQuestion();
+    });
 
 });
