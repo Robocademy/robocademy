@@ -35,7 +35,7 @@ function setQuestion()
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
-    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>');
+    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>').css('background', '#FFF');
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
         var answer = lesson.answer_choices[i];
