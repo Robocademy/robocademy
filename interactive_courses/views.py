@@ -58,7 +58,7 @@ def admin_save(request, slug):
         lesson = Lesson(course=course, order=lesson_order, title='')
         lesson.save()
         try:
-            lesson_content = LessonContent(lesson=lesson, content_type=request.POST['lesson_%s_content_type' % (lesson_order)], content=request.POST['lesson_%s_content' % (lesson_order)])
+            lesson_content = LessonContent(lesson=lesson, type=request.POST['lesson_%s_content_type' % (lesson_order)], content=request.POST['lesson_%s_content' % (lesson_order)])
             lesson_content.save()
         except:
             pass

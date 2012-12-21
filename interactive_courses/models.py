@@ -89,7 +89,7 @@ class Lesson(models.Model):
             pass
         try:
             lesson_content = LessonContent.objects.filter(lesson=self)[0]
-            d.update({'content_type': lesson.content_type, 'content': lesson.content})
+            d.update({'content_type': lesson_content.type, 'content': lesson_content.content})
         except:
            pass
         d.update({'question': QuestionAndAnswer.objects.filter(lesson=self)[0].statement})
