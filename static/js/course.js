@@ -67,7 +67,7 @@ function getData()
                         width: width, // the width of the player
                         height: height, // the height of the player
                         allowFullScreen: "true", // true by default, allow user to go full screen
-                        initialVideo: lesson.video_id, // the video that is loaded into the player
+                        initialVideo: lesson.content, // the video that is loaded into the player
                         preferredQuality: "default",// preferred quality: default, small, medium, large, hd720
                         onPlayerEnded: function(){setQuestion();},
                         onPlay: function(id){}, // after the play method is called
