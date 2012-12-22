@@ -71,27 +71,30 @@ def admin_save(request, slug):
         #for question_order in range(1, last_question):
         #for question_order in list(set([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])):
         for question_order in [1]:
-            #checkboxes
-            checkbox_question = CheckboxQuestion2()
-            checkbox_question.save()
-            checkbox_answer = CheckboxAnswer2()
-            checkbox_answer.save()
-            for h, cq in enumerate(sorted([i for i in request.POST.keys() if re.match('\w+_%s_question_%s_answer_choice_\d+' % (lesson_order, question_order), i)])):
-                checkbox = Checkbox2(order=h, value=request.POST[cq])
-                checkbox.save()
-                checkbox_question.checkboxes.add(checkbox)
-                if cq.replace('answer_choice', 'answer') in request.POST:
-                    checkbox_answer.correct_checkboxes.add(checkbox)
-            checkbox_question.save()
-            checkbox_answer.save()
-            question = QuestionAndAnswer(lesson=lesson, order=question_order, 
-                statement=request.POST['lesson_%s_question_%s' % (lesson_order, question_order)],
-                question_type=ContentType.objects.get(app_label="interactive_courses", model="CheckboxQuestion2"),
-                question_id=checkbox_question.id,
-                answer_type=ContentType.objects.get(app_label="interactive_courses", model="CheckboxAnswer2"),
-                answer_id=checkbox_answer.id)
-            #question.statement = request.POST['lesson_%s_question_%s' % (lesson_order, question_order)]
-            question.save()
+            try:
+                #checkboxes
+                checkbox_question = CheckboxQuestion2()
+                checkbox_question.save()
+                checkbox_answer = CheckboxAnswer2()
+                checkbox_answer.save()
+                for h, cq in enumerate(sorted([i for i in request.POST.keys() if re.match('\w+_%s_question_%s_answer_choice_\d+' % (lesson_order, question_order), i)])):
+                    checkbox = Checkbox2(order=h, value=request.POST[cq])
+                    checkbox.save()
+                    checkbox_question.checkboxes.add(checkbox)
+                    if cq.replace('answer_choice', 'answer') in request.POST:
+                        checkbox_answer.correct_checkboxes.add(checkbox)
+                checkbox_question.save()
+                checkbox_answer.save()
+                question = QuestionAndAnswer(lesson=lesson, order=question_order, 
+                    statement=request.POST['lesson_%s_question_%s' % (lesson_order, question_order)],
+                    question_type=ContentType.objects.get(app_label="interactive_courses", model="CheckboxQuestion2"),
+                    question_id=checkbox_question.id,
+                    answer_type=ContentType.objects.get(app_label="interactive_courses", model="CheckboxAnswer2"),
+                    answer_id=checkbox_answer.id)
+                #question.statement = request.POST['lesson_%s_question_%s' % (lesson_order, question_order)]
+                question.save()
+            except:
+                pass
         
     #return HttpResponse(str(request.POST))
     # get the lessons
