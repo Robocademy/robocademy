@@ -35,7 +35,7 @@ function setQuestion()
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
-    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>').css('background', '#FFF');
+    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>').css('background', '#FFF').css('text-align', 'left');;
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
         var answer = lesson.answer_choices[i];
@@ -78,7 +78,7 @@ function getData()
                     });
                     break;
                 case "text":
-                    $("#video_"+lesson.order).text(lesson.content).css('text-align', 'center');
+                    $("#video_"+lesson.order).html('<p style="font-size:1.5em">'+lesson.content+'</p>').css('text-align', 'center');
                     $("#video_"+lesson.order).append('<input type="button" value="Next" class="set_question" />');
                     break;       
                 case "image":
