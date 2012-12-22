@@ -109,6 +109,12 @@ class Lesson(models.Model):
     def get_content(self):
         return LessonContent.objects.filter(lesson=self)[0]    
         
+    def content_type(self):
+        return LessonContent.objects.filter(lesson=self)[0].type
+        
+    def content(self):
+        return LessonContent.objects.filter(lesson=self)[0].content
+        
     def get_question(self):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].statement
         
