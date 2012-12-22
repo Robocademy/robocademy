@@ -59,7 +59,7 @@
 <form>
 <input type="button" id="save" value="Save (CTRL-S)" style="float:right" />Course title: <input id="course_title" type="text" name="course_title" value="{{ course.title }}" />
 <ol>{% if course.get_lessons %}
-{% for lesson in course.get_lessons %}
+{% for lesson in course.get_lessons %}   
 <li id="lesson_{{ lesson.order }}"><div style="float:right">
 <input type="button" lesson="{{ lesson.id }}" value="Delete lesson" class="delete_lesson">
 <input type="button" value="Append new lesson" class="append_new_lesson">
@@ -68,6 +68,12 @@
 <!--<input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="lesson_title long" />-->
 <table>
 <tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" class="lesson_video_id" /></td></tr>
+<tr><th>Content type:</th><td><select class="lesson_content_type">
+<option value="youtube_id"{% if lesson.content_type == 'youtube_id' %} selected{% endif %}>Youtube id</option>
+<option value="text"{% if lesson.content_type == 'text' %} selected{% endif %}>Text</option>
+<option value="image"{% if lesson.content_type == 'image' %} selected{% endif %}>Image</option>
+</select></td></tr>
+<tr><th>Content:</th><td><textarea value="" class="lesson_content">{{ lesson.content }}</textarea></td></tr>
 {% if lesson.get_questions %}
 {% for question in lesson.get_questions %}
 <tr><th></th><td>
