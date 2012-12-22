@@ -101,8 +101,11 @@ class Lesson(models.Model):
         return d
         
     def get_video_id(self):
-        return Video.objects.filter(lesson=self)[0].url
-        
+        try:
+            return Video.objects.filter(lesson=self)[0].url
+        except:
+            return ''
+            
     def get_content(self):
         return LessonContent.objects.filter(lesson=self)[0]    
         
