@@ -17,7 +17,6 @@
 </div>
 <!--<input type="text" name="lesson__title" value="" class="lesson_title long" />-->
 <table>
-<tr><th>Video id:</th><td><input type="text" name="lesson__video_id" value="" class="lesson_video_id" /></td></tr>
 <tr><th>Content type:</th><td><select class="lesson_content_type">
 <option value="youtube_id">Youtube id</option>
 <option value="text">Text</option>
@@ -67,7 +66,6 @@
 </div>
 <!--<input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="lesson_title long" />-->
 <table>
-<tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" class="lesson_video_id" /></td></tr>
 <tr><th>Content type:</th><td><select class="lesson_content_type">
 <option value="youtube_id"{% if lesson.content_type == 'youtube_id' %} selected{% endif %}>Youtube id</option>
 <option value="text"{% if lesson.content_type == 'text' %} selected{% endif %}>Text</option>
@@ -140,7 +138,6 @@
 </div>
 <!--<input type="text" name="lesson_{{ lesson.order }}_title" value="{{ lesson.title }}" class="lesson_title long" />-->
 <table>
-<tr><th>Video id:</th><td><input type="text" name="lesson_{{ lesson.order }}_video_id" value="{{ lesson.get_video_id }}" class="lesson_video_id" /></td></tr>
 <tr><th>Content type:</th><td><select class="lesson_content_type">
 <option value="youtube_id">Youtube id</option>
 <option value="text">Text</option>
