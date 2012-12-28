@@ -143,6 +143,12 @@ class Video(models.Model):
     def __unicode__(self):
         return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title)   
         
+class ImageToDisplayAfterVideo(models.Model):
+    lesson = models.ForeignKey(Lesson)
+
+    def __unicode__(self):    
+        return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title)       
+        
 class QuestionAndAnswer(models.Model):
     lesson = models.ForeignKey(Lesson)
     order = models.PositiveIntegerField(default=1)
