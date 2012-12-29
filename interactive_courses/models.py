@@ -109,6 +109,7 @@ class Lesson(models.Model):
         return d
         
     def display_after_video(self):
+        return DisplayAfterVideo.objects.get(lesson=self)[0].image
         try:
             return DisplayAfterVideo.objects.get(lesson=self)[0].image
         except:
