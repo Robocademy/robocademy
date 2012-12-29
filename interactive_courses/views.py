@@ -67,6 +67,11 @@ def admin_save(request, slug):
             video.save()
         except:
             pass
+            
+        try:
+            display_after_video = DisplayAfterVideo(lesson=lesson, image=request.POST['lesson_%s_display_after_video' % (lesson_order)])
+        except:
+            pass        
         #last_question = max([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])
         #for question_order in range(1, last_question):
         #for question_order in list(set([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])):
