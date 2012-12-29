@@ -23,6 +23,7 @@
 <option value="image">Image</option>
 </select></td></tr>
 <tr><th>Content:</th><td><textarea value="" class="lesson_content"></textarea></td></tr>
+<tr><th>Image to display after video:</th><td><input type="" value="" class="display_after_video" /></td></tr>
 <tr><th></th><td>
 <div style="float:right"><input type="button" value="Delete question" class="delete_question" />
 <input type="button" value="Append question" class="append_question" />
@@ -72,6 +73,7 @@
 <option value="image"{% if lesson.content_type == 'image' %} selected{% endif %}>Image</option>
 </select></td></tr>
 <tr><th>Content:</th><td><textarea value="" class="lesson_content">{{ lesson.content }}</textarea></td></tr>
+<tr><th>Image to display after video:</th><td><input type="" value="{{ lesson.display_after_video }}" class="display_after_video" /></td></tr>
 {% if lesson.get_questions %}
 {% for question in lesson.get_questions %}
 <tr><th></th><td>
