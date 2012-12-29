@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 import json
-from models import Course, CourseAuthorRelationship, Lesson, LessonContent, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2
+from models import Course, CourseAuthorRelationship, Lesson, LessonContent, Video, QuestionAndAnswer, CheckboxQuestion2, CheckboxAnswer2, Checkbox2, DisplayAfterVideo
 from django.shortcuts import render_to_response
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
