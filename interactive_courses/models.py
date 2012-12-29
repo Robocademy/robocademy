@@ -98,6 +98,10 @@ class Lesson(models.Model):
             d.update({'answer_ids': QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()})
         except:
             pass
+        try:
+            d.update({'display_after_video': DisplayAfterVideo.objects.get(lesson=self)[0].image})
+        except:
+            pass
         return d
         
     def get_video_id(self):
@@ -125,7 +129,9 @@ class Lesson(models.Model):
         return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_choices()
 
     def get_answer_ids(self):
-        return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()          
+        return QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()      
+
+            
         
 class LessonContent(models.Model):
     lesson = models.ForeignKey(Lesson)
@@ -143,9 +149,10 @@ class Video(models.Model):
     def __unicode__(self):
         return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title)   
         
-class ImageToDisplayAfterVideo(models.Model):
+class DisplayAfterVideo(models.Model):
     lesson = models.ForeignKey(Lesson)
-
+    image = models.CharField(max_length=200)
+    
     def __unicode__(self):    
         return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title)       
         
