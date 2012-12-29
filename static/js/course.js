@@ -182,14 +182,15 @@ function getData()
 }	
 
 $(function() {
-    total_width = $(window).width();
+    width = $(window).width();
+    total_height = $(window).outerHeight();
     if (show_image_on_top_of_question) {
-        width = $(window).width() / 2;
+        height = $(window).width() / 2;
         
     } else {
-        width = total_width;
+        height = total_height;
     }
-    height = $(window).outerHeight();
+    
     console.log('width '+ width);
     console.log('height '+ height);
     $('.video').css('width', width);
