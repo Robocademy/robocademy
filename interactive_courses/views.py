@@ -70,6 +70,7 @@ def admin_save(request, slug):
             
         try:
             display_after_video = DisplayAfterVideo(lesson=lesson, image=request.POST['lesson_%s_display_after_video' % (lesson_order)])
+            display_after_video.save()
         except:
             pass        
         #last_question = max([int(re.search('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i).group('n')) for i in request.POST.keys() if re.match('\w+_%s_\w+_(?P<n>\d+)' % (lesson_order), i)])
