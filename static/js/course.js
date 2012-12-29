@@ -8,6 +8,7 @@ var left_to_go = 0;
 var wrong = false;
 var responsive_quizzing = true;
 var replay_video_automatically = false;
+var show_image_on_top_of_question = true;
 function askToContinue()
 {
     $('#video_'+lesson_order).html('<div style="text-align:center"><p>Good job! Do you want to continue?</p><input type="button" class="continue" value="Continue" /></div>');
@@ -19,7 +20,7 @@ function nextLesson()
     if (lesson_order == lessons.length) {
         $('#video_'+lesson_order).html('Congrats! You finished the course.');
     } else {
-        $('.small_video').tubeplayer("stop")
+        $('.small_video').tubeplayer("stop");
         $('.answer_checkbox').remove();
         $('#video_'+lesson_order).hide();
         lesson_order += 1;
@@ -181,7 +182,13 @@ function getData()
 }	
 
 $(function() {
-    width = $(window).width();
+    total_width = $(window).width();
+    if (show_image_on_top_of_question) {
+        width = $(window).width() / 2;
+        
+    } else {
+        width = total_width;
+    }
     height = $(window).outerHeight();
     console.log('width '+ width);
     console.log('height '+ height);
