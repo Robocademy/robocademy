@@ -25,7 +25,11 @@ class Course(models.Model):
                 lesson_content.delete()
             except:
                 pass            
-                
+            try:
+                display_after_video = DisplayAfterVideo.objects.get(lesson=self)
+                display_after_video.delete()
+            except:
+                pass
             for j in Video.objects.filter(lesson=i):
                 j.delete()
             for j in QuestionAndAnswer.objects.filter(lesson=i):
@@ -104,6 +108,12 @@ class Lesson(models.Model):
             pass
         return d
         
+    def display_after_video(self):
+        try:
+            return DisplayAfterVideo.objects.get(lesson=self)[0].image
+        except:
+            return ''
+        
     def get_video_id(self):
         try:
             return Video.objects.filter(lesson=self)[0].url
@@ -155,6 +165,7 @@ class DisplayAfterVideo(models.Model):
     
     def __unicode__(self):    
         return '%s: %s. %s' % (self.lesson.course.title, self.lesson.order, self.lesson.title)       
+        
         
 class QuestionAndAnswer(models.Model):
     lesson = models.ForeignKey(Lesson)
