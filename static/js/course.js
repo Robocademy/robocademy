@@ -48,8 +48,8 @@ function setQuestion()
     //alert(JSON.stringify(lesson))
     if (show_image_on_top_of_question) {
         var location = "#question";
-        $("#video_"+lesson_order).html('').css({'background': 'url("'+lesson.display_after_video+' no-repeat")'});
-        alert(JSON.stringify(lesson));
+        $("#video_"+lesson_order).html('').css({'background': 'url("'+lesson.display_after_video+'") no-repeat'});
+        //alert(JSON.stringify(lesson));
     } else {
         var location = "#video_"+lesson_order;
     }
@@ -110,7 +110,7 @@ function getData()
             }
         }
         if (show_image_on_top_of_question) {
-            $('body').append('<div id="question"></div>').css({'background': 'red', 'height': height});
+            $('body').append('<div id="question"></div>').css({'height': height});
             $('.video').css({'height': height});
         }
         
