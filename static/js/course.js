@@ -23,7 +23,7 @@ function askToContinue()
 function nextLesson()
 {
     if (show_image_on_top_of_question) {
-        $("#quextion").html('');
+        $("#question").html('');
         
     }
     window.location.hash = lesson_order;
