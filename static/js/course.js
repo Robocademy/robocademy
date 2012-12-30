@@ -22,6 +22,10 @@ function askToContinue()
 
 function nextLesson()
 {
+    if (show_image_on_top_of_question) {
+        $("#quextion").html('');
+        
+    }
     window.location.hash = lesson_order;
     if (lesson_order == lessons.length) {
         $('#video_'+lesson_order).html('Congrats! You finished the course.');
@@ -106,6 +110,7 @@ function getData()
         }
         if (show_image_on_top_of_question) {
             $('body').append('<div id="question"></div>').css({'background': 'red', 'height': height});
+            $('.video').css({'height': height});
         }
         
         
