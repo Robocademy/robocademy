@@ -102,6 +102,7 @@ class Lesson(models.Model):
             d.update({'answer_ids': QuestionAndAnswer.objects.filter(lesson=self)[0].get_answer_ids()})
         except:
             pass
+        d.update({'display_after_video': DisplayAfterVideo.objects.get(lesson=self)[0].image})
         try:
             d.update({'display_after_video': DisplayAfterVideo.objects.get(lesson=self)[0].image})
         except:
