@@ -36,17 +36,23 @@ function setQuestion()
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
-    $("#video_"+lesson_order).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>').css('background', '#FFF').css('text-align', 'left');;
+    if (show_image_on_top_of_question) {
+        var location = "question";
+        
+    } else {
+        var location = "#video_"+lesson_order;
+    }
+    $(location).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>').css('background', '#FFF').css('text-align', 'left');;
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
         var answer = lesson.answer_choices[i];
-        $("#video_"+lesson_order).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
+        $(location).append('<li><input type="checkbox" value="'+answer.id+'" class="checkbox_answer" /> '+answer.value+'</li>');
     }
     left_to_go = answer_ids.length;
     if (responsive_quizzing) {
-        $("#video_"+lesson_order).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
+        $(location).append('</ul><p><span class="n_to_go">'+left_to_go+'</span> to go</p>');
     } else {
-        $("#video_"+lesson_order).append('<input type="button" class="sumbit" value="Sumbit" />');
+        $(location).append('<input type="button" class="sumbit" value="Sumbit" />');
     }
 }
 
