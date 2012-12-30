@@ -48,7 +48,8 @@ function setQuestion()
     //alert(JSON.stringify(lesson))
     if (show_image_on_top_of_question) {
         var location = "#question";
-        $("#video_"+lesson_order).html('').css({'background': 'url("'+lesson.display_after_video+'")'})
+        $("#video_"+lesson_order).html('').css({'background': 'url("'+lesson.display_after_video+'")'});
+        alert(lesson.display_after_video);
     } else {
         var location = "#video_"+lesson_order;
     }
