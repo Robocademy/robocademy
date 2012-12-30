@@ -37,7 +37,7 @@ function setQuestion()
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
     if (show_image_on_top_of_question) {
-        var location = "question";
+        var location = "#question";
         
     } else {
         var location = "#video_"+lesson_order;
