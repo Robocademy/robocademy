@@ -9,15 +9,14 @@ var wrong = false;
 var responsive_quizzing = true;
 var replay_video_automatically = false;
 var show_image_on_top_of_question = true;
-if (show_image_on_top_of_question) {
-    var location = "#question";
-    
-} else {
-    var location = "#video_"+lesson_order;
-}
 function askToContinue()
 {
-
+    if (show_image_on_top_of_question) {
+        var location = "#question";
+        
+    } else {
+        var location = "#video_"+lesson_order;
+    }
     $(location).html('<div style="text-align:center"><p>Good job! Do you want to continue?</p><input type="button" class="continue" value="Continue" /></div>');
 }
 
@@ -43,7 +42,12 @@ function setQuestion()
     lesson = lessons[lesson_order - 1];
     answer_ids = lesson.answer_ids;
     //alert(JSON.stringify(lesson))
-
+    if (show_image_on_top_of_question) {
+        var location = "#question";
+        
+    } else {
+        var location = "#video_"+lesson_order;
+    }
     $(location).html('<p class="question_statement">'+lesson.question+'</p><div class="small_video"></div><ul>').css('background', '#FFF').css('text-align', 'left');;
     for (var i = 0; i < lesson.answer_choices.length; i++)
     {
