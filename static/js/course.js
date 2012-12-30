@@ -92,6 +92,11 @@ function getData()
                 $("#video_"+lesson.order).hide();
             }
         }
+        if (show_image_on_top_of_question) {
+            $('body').append('<div id="question"></div>').css({'background': 'red', 'height': height});
+        }
+        
+        
         //alert($('body').html());
       }
     });
